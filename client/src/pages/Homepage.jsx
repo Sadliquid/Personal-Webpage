@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon } from '@chakra-ui/react';
+import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
-import { FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
-import { SiTypescript, SiDocker } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift, FaCode } from 'react-icons/fa';
+import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs } from 'react-icons/si';
 import { FiTerminal } from 'react-icons/fi';
 
 const MotionBox = motion.create(Box);
@@ -11,12 +11,39 @@ const MotionButton = motion.create(Button);
 const MotionVStack = motion.create(VStack);
 
 const skills = [
-    { icon: FaReact, name: 'React', color: '#82D7F7' },
-    { icon: FaNodeJs, name: 'Node.js', color: 'green.500' },
-    { icon: FaPython, name: 'Python', color: 'blue.500' },
-    { icon: FaDatabase, name: 'SQL', color: 'purple.500' },
-    { icon: SiTypescript, name: 'TypeScript', color: 'blue.600' },
-    { icon: SiDocker, name: 'Docker', color: 'blue.400' },
+    { icon: FaPython, name: 'Python', color: '#3776AB' },
+    { icon: FaDatabase, name: 'SQL', color: '#00758F' },
+    { icon: FaCode, name: 'HTML5 & CSS3', color: '#E34F26' },
+    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
+    { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
+    { icon: FaSwift, name: 'Swift', color: '#FA7343' },
+    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
+    { icon: FaReact, name: 'React', color: '#61DAFB' },
+    { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
+    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+    { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
+    { icon: SiNextdotjs, name: 'Next.js', color: '#000000' }
+];
+
+const blogPosts = [
+    {
+        title: "Building a Full-Stack React Application",
+        excerpt: "Learn how to create a modern web app with React and Node.js...",
+        date: "Mar 15, 2024",
+        link: "#"
+    },
+    {
+        title: "Mastering TypeScript for Better Code",
+        excerpt: "Discover TypeScript's powerful type system and how it improves...",
+        date: "Apr 2, 2024",
+        link: "#"
+    },
+    {
+        title: "Mobile Development with Swift UI",
+        excerpt: "Getting started with SwiftUI for beautiful iOS applications...",
+        date: "Apr 20, 2024",
+        link: "#"
+    },
 ];
 
 const Homepage = () => {
@@ -89,6 +116,7 @@ const Homepage = () => {
                         spacing={6}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
+                        mb={5}
                     >
                         <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full" gap={2}>
                             {skills.map((skill, index) => (
@@ -99,10 +127,10 @@ const Homepage = () => {
                                     borderRadius="lg"
                                     border="1px solid"
                                     borderColor="gray.100"
-                                    
+
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.05 }}
                                 >
                                     <Icon
                                         as={skill.icon}
@@ -112,6 +140,48 @@ const Homepage = () => {
                                         filter="drop-shadow(0 0 8px currentColor)"
                                     />
                                     <Text fontWeight="500" color="gray.600">{skill.name}</Text>
+                                </MotionBox>
+                            ))}
+                        </SimpleGrid>
+                    </MotionVStack>
+
+                    <MotionVStack
+                        w="full"
+                        spacing={8}
+                        mb={32}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        <Heading fontSize="3xl" fontWeight="700" color="gray.800" mb={5}>
+                            Latest Posts
+                        </Heading>
+                        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
+                            {blogPosts.map((post, index) => (
+                                <MotionBox
+                                    key={post.title}
+                                    p={6}
+                                    bg="white"
+                                    borderRadius="xl"
+                                    border="1px solid"
+                                    borderColor="gray.100"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    whileHover={{ y: -5 }}
+                                >
+                                    <Text fontSize="sm" color="gray.500" mb={2}>{post.date}</Text>
+                                    <Heading fontSize="xl" mb={2}>{post.title}</Heading>
+                                    <Text color="gray.600" mb={4}>{post.excerpt}</Text>
+                                    <Link
+                                        href={post.link}
+                                        color="teal.500"
+                                        fontWeight="600"
+                                        _hover={{ textDecoration: 'underline' }}
+                                    >
+                                        Read more →
+                                    </Link>
                                 </MotionBox>
                             ))}
                         </SimpleGrid>

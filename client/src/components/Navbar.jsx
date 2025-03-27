@@ -17,7 +17,7 @@ const Navbar = () => {
         <MotionFlex
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 40, damping: 10 }}
+            transition={{ type: 'spring', stiffness: 100, damping: 15 }}
             position="fixed"
             w="100%"
             bg="white"
