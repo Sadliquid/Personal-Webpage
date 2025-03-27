@@ -30,7 +30,7 @@ const Homepage = () => {
     return (
         <Box minH="100vh" bg="gray.50" position="relative" overflow="hidden">
             <Flex
-                minH="100vh"
+                minH="90vh"
                 align="center"
                 px={8}
                 pt={24}
@@ -62,12 +62,12 @@ const Homepage = () => {
                             &lt;Text&gt;Welcome to my digital space&lt;/Text&gt;
                         </Text>
 
-                        <Text fontSize={{ base: '4xl', md: '6xl' }} fontWeight="bold" lineHeight="1.1">
+                        <Text fontSize={{ base: '4xl', md: '6xl' }} fontWeight="bold" lineHeight="1.1" mb={3}>
                             <Box as="span" color="gray.800" fontSize={"5xl"}>Hey 👋🏻 I'm {text}</Box>
                             <Cursor cursorStyle="|" cursorColor="grey" />
                         </Text>
 
-                        <Text fontSize="xl" color="gray.600" maxW="2xl">
+                        <Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
                             Building robust solutions with modern technologies. Specializing in full-stack
                             development with a focus on clean architecture and user-centric design.
                         </Text>
@@ -85,7 +85,7 @@ const Homepage = () => {
 
                     <MotionVStack
                         w="full"
-                        pt={16}
+                        pt={8}
                         spacing={6}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
