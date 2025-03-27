@@ -11,7 +11,7 @@ const MotionButton = motion.create(Button);
 const MotionVStack = motion.create(VStack);
 
 const skills = [
-    { icon: FaReact, name: 'React', color: 'teal.500' },
+    { icon: FaReact, name: 'React', color: '#82D7F7' },
     { icon: FaNodeJs, name: 'Node.js', color: 'green.500' },
     { icon: FaPython, name: 'Python', color: 'blue.500' },
     { icon: FaDatabase, name: 'SQL', color: 'purple.500' },
