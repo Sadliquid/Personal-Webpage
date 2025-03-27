@@ -99,19 +99,19 @@ const Homepage = () => {
                                     borderRadius="lg"
                                     border="1px solid"
                                     borderColor="gray.100"
-                                    textAlign="center"
+                                    
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
                                 >
                                     <Icon
                                         as={skill.icon}
-                                        w={12}
-                                        h={12}
+                                        boxSize={8}
+                                        mb={2}
                                         color={skill.color}
-                                        mb={3}
+                                        filter="drop-shadow(0 0 8px currentColor)"
                                     />
-                                    <Text fontWeight="500" color="gray.700">{skill.name}</Text>
+                                    <Text fontWeight="500" color="gray.600">{skill.name}</Text>
                                 </MotionBox>
                             ))}
                         </SimpleGrid>
