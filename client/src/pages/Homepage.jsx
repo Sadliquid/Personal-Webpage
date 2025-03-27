@@ -59,7 +59,7 @@ const Homepage = () => {
                             borderRadius="sm"
                             display="inline-block"
                         >
-                            Welcome to my digital space
+                            &lt;Text&gt;Welcome to my digital space&lt;/Text&gt;
                         </Text>
 
                         <Text fontSize={{ base: '4xl', md: '6xl' }} fontWeight="bold" lineHeight="1.1">
