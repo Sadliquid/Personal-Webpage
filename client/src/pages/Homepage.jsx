@@ -11,18 +11,18 @@ const MotionButton = motion.create(Button);
 const MotionVStack = motion.create(VStack);
 
 const skills = [
-    { icon: FaPython, name: 'Python', color: '#3776AB' },
-    { icon: FaDatabase, name: 'SQL', color: '#00758F' },
-    { icon: FaCode, name: 'HTML5 & CSS3', color: '#E34F26' },
-    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
-    { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
-    { icon: FaSwift, name: 'Swift', color: '#FA7343' },
-    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
     { icon: FaReact, name: 'React', color: '#61DAFB' },
-    { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
+    { icon: SiNextdotjs, name: 'Next.js', color: 'black' },
+    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
     { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
-    { icon: SiNextdotjs, name: 'Next.js', color: '#000000' }
+    { icon: FaPython, name: 'Python', color: '#3776AB' },
+    { icon: FaSwift, name: 'Swift', color: '#FA7343' },
+    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+    { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
+    { icon: FaDatabase, name: 'SQL', color: '#00758F' },
+    { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
+    { icon: FaCode, name: 'HTML5 & CSS3', color: '#E34F26' }
 ];
 
 const blogPosts = [
@@ -105,6 +105,15 @@ const Homepage = () => {
                             size="lg"
                             px={8}
                             py={6}
+                            bgGradient="linear(to-r, teal.400, blue.400)"
+                            _hover={{ bgGradient: "linear(to-r, teal.500, blue.500)" }}
+                            whileHover={{
+                                y: -2,
+                                scale: 1.02,
+                                boxShadow: '0 5px 20px rgba(0, 128, 128, 0.3)'
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ type: 'spring', stiffness: 200 }}
                         >
                             Explore Projects
                         </MotionButton>
@@ -114,8 +123,10 @@ const Homepage = () => {
                         w="full"
                         pt={8}
                         spacing={6}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "0px" }}
+                        transition={{ duration: 0.6 }}
                         mb={5}
                     >
                         <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full" gap={2}>
@@ -127,17 +138,21 @@ const Homepage = () => {
                                     borderRadius="lg"
                                     border="1px solid"
                                     borderColor="gray.100"
-
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.05 }}
+                                    transition={{
+                                        delay: index * 0.1,
+                                        type: 'spring',
+                                        stiffness: 90,
+                                        damping: 15
+                                    }}
                                 >
                                     <Icon
                                         as={skill.icon}
                                         boxSize={8}
                                         mb={2}
                                         color={skill.color}
-                                        filter="drop-shadow(0 0 8px currentColor)"
+                                        filter={skill.color !== "black" ? "drop-shadow(0 0 8px currentColor)" : "drop-shadow(0 0 8px whitesmoke)"}
                                     />
                                     <Text fontWeight="500" color="gray.600">{skill.name}</Text>
                                 </MotionBox>
@@ -149,15 +164,16 @@ const Homepage = () => {
                         w="full"
                         spacing={8}
                         mb={32}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, margin: "0px" }}
+                        transition={{ duration: 0.6 }}
                     >
                         <Heading fontSize="3xl" fontWeight="700" color="gray.800" mb={5}>
                             Latest Posts
                         </Heading>
-                        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
-                            {blogPosts.map((post, index) => (
+                        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full" gap={6}>
+                            {blogPosts.map((post) => (
                                 <MotionBox
                                     key={post.title}
                                     p={6}
@@ -165,11 +181,14 @@ const Homepage = () => {
                                     borderRadius="xl"
                                     border="1px solid"
                                     borderColor="gray.100"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    whileHover={{ y: -5 }}
+                                    transition={{
+                                        type: 'spring',
+                                        stiffness: 200,
+                                        damping: 20,
+                                    }}
                                 >
                                     <Text fontSize="sm" color="gray.500" mb={2}>{post.date}</Text>
                                     <Heading fontSize="xl" mb={2}>{post.title}</Heading>
@@ -185,11 +204,11 @@ const Homepage = () => {
                                 </MotionBox>
                             ))}
                         </SimpleGrid>
+
                     </MotionVStack>
                 </VStack>
             </Flex>
 
-            {/* Animated Background Elements */}
             <MotionBox
                 position="absolute"
                 w="800px"

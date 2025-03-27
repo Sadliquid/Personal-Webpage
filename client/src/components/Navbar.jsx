@@ -3,8 +3,8 @@ import { Flex, Link, Icon, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FiTerminal } from 'react-icons/fi';
 
-const MotionFlex = motion(Flex);
-const MotionLink = motion(Link);
+const MotionFlex = motion.create(Flex);
+const MotionLink = motion.create(Link);
 
 const links = [
     { name: 'Work', href: '#work' },
