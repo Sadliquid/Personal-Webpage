@@ -6,9 +6,9 @@ import { FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
 import { SiTypescript, SiDocker } from 'react-icons/si';
 import { FiTerminal } from 'react-icons/fi';
 
-const MotionBox = motion(Box);
-const MotionButton = motion(Button);
-const MotionVStack = motion(VStack);
+const MotionBox = motion.create(Box);
+const MotionButton = motion.create(Button);
+const MotionVStack = motion.create(VStack);
 
 const skills = [
     { icon: FaReact, name: 'React', color: 'teal.500' },
