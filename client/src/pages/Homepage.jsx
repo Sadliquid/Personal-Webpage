@@ -90,7 +90,7 @@ const Homepage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                     >
-                        <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full">
+                        <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full" gap={2}>
                             {skills.map((skill, index) => (
                                 <MotionBox
                                     key={skill.name}
@@ -103,7 +103,6 @@ const Homepage = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
-                                    m={2}
                                 >
                                     <Icon
                                         as={skill.icon}
