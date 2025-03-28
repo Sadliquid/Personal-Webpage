@@ -86,7 +86,7 @@ const Homepage = () => {
                             borderRadius="sm"
                             display="inline-block"
                         >
-                            &lt;Text&gt;Welcome to my digital space&lt;/Text&gt;
+                            &lt;Text&gt;Hello there! How're you today?&lt;/Text&gt;
                         </Text>
 
                         <Text fontSize={{ base: '4xl', md: '6xl' }} fontWeight="bold" lineHeight="1.1" mb={3}>
@@ -95,8 +95,7 @@ const Homepage = () => {
                         </Text>
 
                         <Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
-                            Building robust solutions with modern technologies. Specializing in full-stack
-                            development with a focus on clean architecture and user-centric design.
+                            I have a passion for building robust Web Applications, developing innovative Discord Bots, and designing intuitive, modern User Interfaces. I love exploring Artificial Intelligence, Cloud Technologies and iOS Development.
                         </Text>
 
                         <MotionButton
