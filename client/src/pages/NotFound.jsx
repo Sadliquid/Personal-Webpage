@@ -1,12 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Button, Flex, VStack, Icon, Link } from '@chakra-ui/react';
+import { Box, Text, Button, Flex, VStack, Icon, Link, Heading } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import { FiAlertTriangle, FiTerminal } from 'react-icons/fi';
 
 const MotionBox = motion.create(Box);
 const MotionText = motion.create(Text);
+const MotionHeading = motion.create(Heading);
 
 function NotFound() {
+    const [text] = useTypewriter({
+        words: ['404 Page Not Found.'],
+        typeSpeed: 50,
+        delaySpeed: 0,
+        loop: 1,
+    });
 
     return (
         <Box minH="100vh" bg="gray.50" position="relative" overflow="hidden">
@@ -20,6 +28,7 @@ function NotFound() {
             >
                 <VStack spacing={12} align="center" textAlign="center">
                     <MotionBox
+                        mb={2}
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{
@@ -36,6 +45,21 @@ function NotFound() {
                             filter="drop-shadow(0 0 12px rgba(251, 176, 59, 0.5))"
                         />
                     </MotionBox>
+
+                    <MotionHeading
+                        fontSize={{ base: "2xl", md: "3xl" }}
+                        fontWeight="bold"
+                        bgGradient="linear(to-r, teal.400, blue.500)"
+                        bgClip="text"
+                        color={"gray"}
+                        mb={2}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        {text}
+                        <Cursor cursorStyle="|" cursorColor="gray.400" />
+                    </MotionHeading>
 
                     <MotionText
                         fontSize={{ base: "xl", md: "2xl" }}
@@ -69,13 +93,8 @@ function NotFound() {
                                     size="lg"
                                     px={8}
                                     py={6}
-                                    mt={3}
+                                    mt={5}
                                     bgGradient="linear(to-r, teal.400, blue.400)"
-                                    _hover={{
-                                        bgGradient: "linear(to-r, teal.500, blue.500)",
-                                        transform: "scale(1.02)",
-                                        boxShadow: '0 5px 20px rgba(0, 128, 128, 0.3)'
-                                    }}
                                     transition="all 0.2s cubic-bezier(0.4, 0, 0.2, 1)"
                                 >
                                     Return to Home
