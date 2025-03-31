@@ -30,12 +30,24 @@ function NotFound() {
                     <MotionBox
                         mb={2}
                         initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
+                        animate={{
+                            scale: 1,
+                            rotate: 0,
+                            // Add these to pin the position
+                            x: 0,
+                            y: 0
+                        }}
                         transition={{
                             type: "spring",
                             stiffness: 260,
                             damping: 20,
                             duration: 0.8
+                        }}
+                        // Add these styles to ensure stable positioning
+                        style={{
+                            transformOrigin: 'center',
+                            willChange: 'transform',
+                            position: 'relative'
                         }}
                     >
                         <Icon
@@ -43,6 +55,9 @@ function NotFound() {
                             boxSize={{ base: 24, md: 32 }}
                             color="orange.400"
                             filter="drop-shadow(0 0 12px rgba(251, 176, 59, 0.5))"
+                            // Ensure icon stays centered
+                            display="block"
+                            mx="auto"
                         />
                     </MotionBox>
 

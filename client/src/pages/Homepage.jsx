@@ -131,6 +131,7 @@ const Homepage = () => {
                         <SimpleGrid columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full" gap={2}>
                             {skills.map((skill, index) => (
                                 <MotionBox
+                                    textAlign={"left"}
                                     key={skill.name}
                                     p={6}
                                     bg="white"
@@ -138,12 +139,21 @@ const Homepage = () => {
                                     border="1px solid"
                                     borderColor="gray.100"
                                     initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                        x: 0
+                                    }}
                                     transition={{
                                         delay: index * 0.1,
                                         type: 'spring',
                                         stiffness: 90,
                                         damping: 15
+                                    }}
+                                    style={{
+                                        transformOrigin: 'center',
+                                        willChange: 'transform',
+                                        position: 'relative'
                                     }}
                                 >
                                     <Icon
