@@ -6,6 +6,7 @@ import { FiTerminal } from 'react-icons/fi';
 
 const MotionFlex = motion.create(Flex);
 const MotionLink = motion.create(Link);
+const MotionBox = motion.create(Box);
 
 const links = [
     { name: 'Home', href: '/' },
@@ -36,24 +37,42 @@ const Navbar = () => {
             borderColor="gray.100"
             boxShadow="sm"
         >
-            <Link href="#" display="flex" alignItems="center" gap={2}>
+            <Link href="#" display="flex" alignItems="center" gap={2} textDecoration={"none"}>
                 <Icon as={FiTerminal} w={6} h={6} color="teal.500" />
-                <Box
+                <MotionBox
                     as="span"
                     fontSize="xl"
                     fontWeight="bold"
-                    bgColor={"teal.300"}
-                    bgClip="text"
-                    color={"black"}
+                    position="relative"
+                    color="black"
+                    css={{
+                        '&:hover::after': {
+                            transform: 'scaleX(1)',
+                            opacity: 1
+                        },
+                        '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '100%',
+                            height: '2px',
+                            bottom: '-4px',
+                            left: '0',
+                            backgroundColor: 'rgba(49, 151, 149, 0.7)',
+                            transform: 'scaleX(0)',
+                            transformOrigin: 'center',
+                            opacity: 0,
+                            transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease'
+                        }
+                    }}
                 >
                     Joshua's Portfolio
-                </Box>
+                </MotionBox>
             </Link>
 
             <Flex gap={8}>
                 {links.map((link) => {
                     const isActive = location.pathname === link.href;
-                    
+
                     return (
                         <MotionLink
                             key={link.name}

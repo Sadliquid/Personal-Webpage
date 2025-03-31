@@ -104,15 +104,7 @@ const Homepage = () => {
                             size="lg"
                             px={8}
                             py={6}
-                            bgGradient="linear(to-r, teal.400, blue.400)"
-                            _hover={{ bgGradient: "linear(to-r, teal.500, blue.500)" }}
-                            whileHover={{
-                                y: -2,
-                                scale: 1.02,
-                                boxShadow: '0 5px 20px rgba(0, 128, 128, 0.3)'
-                            }}
                             whileTap={{ scale: 0.98 }}
-                            transition={{ type: 'spring', stiffness: 200 }}
                         >
                             Explore Projects
                         </MotionButton>
