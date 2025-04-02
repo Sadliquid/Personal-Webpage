@@ -181,8 +181,29 @@ const Homepage = () => {
                                         fontWeight="500"
                                         color="gray.600"
                                         cursor="pointer"
-                                        _hover={{ textDecoration: 'underline' }}
+                                        position="relative"
+                                        display="block"
+                                        width="fit-content"
                                         onClick={() => handleSkillClick(skill)}
+                                        css={{
+                                            '&:hover::after': {
+                                                transform: 'scaleX(1)',
+                                                opacity: 1
+                                            },
+                                            '&::after': {
+                                                content: '""',
+                                                position: 'absolute',
+                                                width: '100%',
+                                                height: '2px',
+                                                bottom: '-4px',
+                                                left: '0',
+                                                backgroundColor: 'rgba(49, 151, 149, 0.7)',
+                                                transform: 'scaleX(0)',
+                                                transformOrigin: 'center',
+                                                opacity: 0,
+                                                transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease'
+                                            }
+                                        }}
                                     >
                                         {skill.name}
                                     </Text>
