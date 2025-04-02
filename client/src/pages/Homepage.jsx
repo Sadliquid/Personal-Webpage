@@ -1,28 +1,32 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link } from '@chakra-ui/react';
+import {
+    Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link,
+    Dialog, CloseButton
+} from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
-import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift, FaCode } from 'react-icons/fa';
-import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs } from 'react-icons/si';
-import { FiTerminal } from 'react-icons/fi';
+import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift } from 'react-icons/fa';
+import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs, SiDotnet } from 'react-icons/si';
+import { FiTerminal, FiExternalLink } from 'react-icons/fi';
+import { useState } from 'react';
 
 const MotionBox = motion.create(Box);
 const MotionButton = motion.create(Button);
 const MotionVStack = motion.create(VStack);
 
 const skills = [
-    { icon: FaReact, name: 'React', color: '#61DAFB' },
-    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
-    { icon: SiNextdotjs, name: 'Next.js', color: 'black' },
-    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
-    { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
-    { icon: FaPython, name: 'Python', color: '#3776AB' },
-    { icon: FaSwift, name: 'Swift', color: '#FA7343' },
-    { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-    { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
-    { icon: FaDatabase, name: 'SQL', color: '#00758F' },
-    { icon: SiFigma, name: 'Figma', color: '#F24E1E' },
-    { icon: FaCode, name: 'HTML5 & CSS3', color: '#E34F26' }
+    { icon: FaReact, name: 'React.js', color: '#61DAFB', url: 'https://reactjs.org' },
+    { icon: FaNodeJs, name: 'Node.js', color: '#339933', url: 'https://nodejs.org' },
+    { icon: SiNextdotjs, name: 'Next.js', color: 'black', url: 'https://nextjs.org' },
+    { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+    { icon: SiTypescript, name: 'TypeScript', color: '#3178C6', url: 'https://www.typescriptlang.org' },
+    { icon: FaPython, name: 'Python 3', color: '#3776AB', url: 'https://www.python.org' },
+    { icon: FaSwift, name: 'Swift', color: '#FA7343', url: 'https://swift.org' },
+    { icon: SiMongodb, name: 'MongoDB', color: '#47A248', url: 'https://www.mongodb.com' },
+    { icon: SiFirebase, name: 'Firebase', color: '#FFCA28', url: 'https://firebase.google.com' },
+    { icon: FaDatabase, name: 'SQL', color: '#00758F', url: 'https://www.mysql.com' },
+    { icon: SiDotnet, name: 'ASP.NET', color: '#866BE1', url: 'https://dotnet.microsoft.com/en-us/apps/aspnet' },
+    { icon: SiFigma, name: 'Figma', color: '#F24E1E', url: 'https://www.figma.com' }
 ];
 
 const blogPosts = [
@@ -53,6 +57,24 @@ const Homepage = () => {
         typeSpeed: 60,
         deleteSpeed: 40,
     });
+
+    // State for selected skill and dialog
+    const [selectedSkill, setSelectedSkill] = useState(null);
+    const [open, setOpen] = useState(false);
+
+    // Handle opening the dialog with a specific skill
+    const handleSkillClick = (skill) => {
+        setSelectedSkill(skill);
+        setOpen(true);
+    };
+
+    // Handle redirect to external site
+    const handleRedirect = () => {
+        if (selectedSkill) {
+            window.open(selectedSkill.url, '_blank');
+            setOpen(false);
+        }
+    };
 
     return (
         <Box minH="100vh" bg="gray.50" position="relative" overflow="hidden">
@@ -137,7 +159,7 @@ const Homepage = () => {
                                         x: 0
                                     }}
                                     transition={{
-                                        delay: index * 0.1,
+                                        delay: index * 0.06,
                                         type: 'spring',
                                         stiffness: 90,
                                         damping: 15
@@ -155,7 +177,15 @@ const Homepage = () => {
                                         color={skill.color}
                                         filter={skill.color !== "black" ? "drop-shadow(0 0 8px currentColor)" : "drop-shadow(0 0 8px whitesmoke)"}
                                     />
-                                    <Text fontWeight="500" color="gray.600">{skill.name}</Text>
+                                    <Text
+                                        fontWeight="500"
+                                        color="gray.600"
+                                        cursor="pointer"
+                                        _hover={{ textDecoration: 'underline' }}
+                                        onClick={() => handleSkillClick(skill)}
+                                    >
+                                        {skill.name}
+                                    </Text>
                                 </MotionBox>
                             ))}
                         </SimpleGrid>
@@ -205,10 +235,54 @@ const Homepage = () => {
                                 </MotionBox>
                             ))}
                         </SimpleGrid>
-
                     </MotionVStack>
                 </VStack>
             </Flex>
+
+            {selectedSkill && (
+                <Dialog.Root
+                    open={open}
+                    onOpenChange={(e) => setOpen(e.open)}
+                    placement={"center"}
+                >
+                    <Dialog.Backdrop />
+                    <Dialog.Backdrop />
+                    <Dialog.Positioner>
+                        <Dialog.Content maxW="md" w="90%">
+                            <Dialog.Header>
+                                <Dialog.Title>You are about to leave this site</Dialog.Title>
+                                <Dialog.CloseTrigger asChild>
+                                    <CloseButton size="sm" />
+                                </Dialog.CloseTrigger>
+                            </Dialog.Header>
+                            <Dialog.Body pb={4}>
+                                <Box p={4} bg="gray.50" borderRadius="md" borderLeft="4px solid" borderColor={selectedSkill.color}>
+                                    <Flex align="center" gap={3}>
+                                        <Icon as={selectedSkill.icon} color={selectedSkill.color} boxSize={6} />
+                                        <Text fontWeight="medium">{selectedSkill.name}</Text>
+                                    </Flex>
+                                    <Text mt={2} color="gray.600" fontSize="sm">
+                                        {selectedSkill.url}
+                                    </Text>
+                                </Box>
+
+                                <Text mt={4} fontSize="sm" color="gray.600">
+                                    This link will take you to an external website. Are you sure you want to continue?
+                                </Text>
+                            </Dialog.Body>
+                            <Dialog.Footer>
+                                <Button
+                                    colorScheme="teal"
+                                    onClick={handleRedirect}
+                                    rightIcon={<FiExternalLink />}
+                                >
+                                    Proceed
+                                </Button>
+                            </Dialog.Footer>
+                        </Dialog.Content>
+                    </Dialog.Positioner>
+                </Dialog.Root>
+            )}
 
             <MotionBox
                 position="absolute"
