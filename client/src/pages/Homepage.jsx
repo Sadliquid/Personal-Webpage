@@ -47,7 +47,7 @@ const blogPosts = [
         excerpt: "Getting started with SwiftUI for beautiful iOS applications...",
         date: "Apr 20, 2024",
         link: "#"
-    },
+    }
 ];
 
 const Homepage = () => {
@@ -159,10 +159,10 @@ const Homepage = () => {
                                         x: 0
                                     }}
                                     transition={{
-                                        delay: index * 0.06,
+                                        delay: index * 0.04,
                                         type: 'spring',
-                                        stiffness: 90,
-                                        damping: 15
+                                        stiffness: 300,
+                                        damping: 20
                                     }}
                                     style={{
                                         transformOrigin: 'center',
