@@ -95,7 +95,7 @@ const Homepage = () => {
                         spacing={6}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 1.0 }}
                     >
                         <Text
                             fontSize="lg"
@@ -108,7 +108,7 @@ const Homepage = () => {
                             borderRadius="sm"
                             display="inline-block"
                         >
-                            &lt;Text&gt;Hello there! How're you today?&lt;/Text&gt;
+                            &lt;Text&gt;Welcome!&lt;/Text&gt;
                         </Text>
 
                         <Text fontSize={{ base: '4xl', md: '6xl' }} fontWeight="bold" lineHeight="1.1" mb={3}>
