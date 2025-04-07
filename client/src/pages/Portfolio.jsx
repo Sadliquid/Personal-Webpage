@@ -88,8 +88,7 @@ const Portfolio = () => {
 							borderColor="gray.100"
 							shadow="md"
 							p={6}
-							height={"100%"}
-							display={{ base: 'none', md: 'block' }}
+							height="100%"
 							overflow="hidden"
 							transition="all 0.3s ease"
 							_hover={{
@@ -97,7 +96,47 @@ const Portfolio = () => {
 								shadow: 'lg'
 							}}
 						>
-							<Text>Placeholder</Text>
+							<VStack spacing={4} align="start">
+								<Heading fontSize="lg" color="blue.600">Tech Stack Radar</Heading>
+								<Flex wrap="wrap" gap={3}>
+									{['TypeScript', 'Python', 'React', 'Node.js', 'Swift', 'AWS', 'PostgreSQL', 'Docker'].map((tech) => (
+										<MotionBox
+											key={tech}
+											initial={{ scale: 0 }}
+											animate={{ scale: 1 }}
+											transition={{ type: 'spring' }}
+										>
+											<Box
+												px={3}
+												py={1}
+												bg="blue.50"
+												borderRadius="full"
+												border="1px solid"
+												borderColor="blue.100"
+												fontSize="sm"
+												_hover={{
+													bg: 'blue.100',
+													transform: 'scale(1.05)'
+												}}
+											>
+												{tech}
+											</Box>
+										</MotionBox>
+									))}
+								</Flex>
+
+								<Box mt={4} w="full">
+									<Heading fontSize="md" mb={2} color="gray.600">Current Focus</Heading>
+									<Flex align="center" gap={2}>
+										<Box w={2} h={2} bg="green.400" borderRadius="full" />
+										<Text fontSize="sm">AI Integration Patterns</Text>
+									</Flex>
+									<Flex align="center" gap={2}>
+										<Box w={2} h={2} bg="purple.400" borderRadius="full" />
+										<Text fontSize="sm">Cloud Native Architectures</Text>
+									</Flex>
+								</Box>
+							</VStack>
 						</Box>
 					</MotionGridItem>
 
