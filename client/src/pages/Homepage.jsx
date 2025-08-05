@@ -226,6 +226,7 @@ const Homepage = () => {
 				w="800px"
 				h="800px"
 				bgGradient="linear(to-br, teal.100, blue.100)"
+                pointerEvents="none"
 				borderRadius="full"
 				filter="blur(80px)"
 				opacity="0.4"
