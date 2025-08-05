@@ -60,7 +60,7 @@ function NotFound() {
 						Oops! The page you're looking for seems to have wandered off into the digital wilderness...
 					</MotionText>
 
-					<Link href="#" isExternal _hover={{ textDecoration: "none" }}>
+					<Link href="/" isExternal _hover={{ textDecoration: "none" }}>
 						<Button
 							variant="outline"
 							borderRadius="full"
