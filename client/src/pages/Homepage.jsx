@@ -108,7 +108,7 @@ const Homepage = () => {
 					</MotionBox>
 
 					{/* Skills Grid */}
-					<MotionSimpleGrid variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} columns={{ base: 2, md: 3, lg: 6 }} spacing={6} w="full" pt={8}>
+					<MotionSimpleGrid variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} columns={{ base: 2, md: 3, lg: 6 }} gap={2} w="full" pt={8}>
 						{skills.map(skill => (
 							<MotionBox
 								key={skill.name}

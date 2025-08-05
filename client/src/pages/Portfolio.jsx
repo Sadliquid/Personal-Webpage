@@ -155,7 +155,7 @@ const Portfolio = () => {
 							<Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" lineHeight="tall">
 								I am a Full-Stack Developer. I have a passion for building robust Web Applications, developing innovative Discord Bots, and designing intuitive, modern User Interfaces. I love exploring Artificial Intelligence, Cloud Technologies and iOS Development.
 							</Text>
-							<Flex gap={6} mt={4} wrap="wrap">
+							<Flex gap={3} mt={4} wrap="wrap">
 								<Link href="https://linkedin.com" isExternal _hover={{ textDecoration: 'none' }}>
 									<Button leftIcon={<FaLinkedin />} colorScheme="linkedin" size="md">
 										LinkedIn
