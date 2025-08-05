@@ -10,7 +10,7 @@ const projects = [
 	{
 		title: "Verdex",
 		description: "Verdex is a Web Platform designed to help Singapore's tourists generate sustainable itineraries. This project was nominated for the Outstanding Project Presentation!",
-		image: "/portfolio-screenshot.png",
+		image: "/projects/verdex.jpg",
 		githubUrl: "https://github.com/Verdex-Project/Verdex",
 		tech: ["Flask", "Cloud", "Gen-AI"]
 	},
@@ -18,7 +18,7 @@ const projects = [
 		title: "MakanMatch",
 		description:
 			"MakanMatch is a revolutionary Web Platform that connects people of a shared community together, fostering a space for residents to share delectable meals together in a sustainable manner by reducing food wastage. This was our 2nd project to be nominated for the Outstanding Project Presentation!",
-		image: "/task-manager.png",
+		image: "/projects/makanmatch.jpg",
 		githubUrl: "https://github.com/MakanMatch",
 		tech: ["ReactJS", "NodeJS", "Cloud", "Framer"]
 	},
@@ -26,49 +26,49 @@ const projects = [
 		title: "Recyclify",
 		description:
 			"Recyclify is a sustainable Classroom Management Platform designed to tackle the growing issue of low-engagement rates from students towards contributing to the evnvironment. This was our 3rd project to be nominated for the Outstanding Project Presentation!",
-		image: "/portfolio-screenshot.png",
+		image: "/projects/recyclify.jpg",
 		githubUrl: "https://github.com/RecyclifyApp",
 		tech: ["ReactJS", "ASP.NET Web Core", "Cloud", "Computer Vision", "Framer"]
 	},
 	{
 		title: "ChatNinja",
 		description: "ChatNinja is a Discord AI Assistant built using the DJS library which brings the power of Generative AI to your Discord servers.",
-		image: "/task-manager.png",
+		image: "/projects/chatninja.jpg",
 		githubUrl: "https://github.com/Sadliquid/ChatNinja",
 		tech: ["DiscordJS", "NodeJS", "Gen-AI", "Vision"]
 	},
 	{
 		title: "MushroomPocket",
 		description: "MushroomPocket is a Gamified Console Application built using C# which allows players to collect in-game characters and participate in PvP battles.",
-		image: "/task-manager.png",
+		image: "/projects/mushroompocket.jpg",
 		githubUrl: "https://github.com/Sadliquid/MushroomPocket",
 		tech: ["Microsoft EF Core", "Object-Oriented Programming"]
 	},
 	{
 		title: "BrawlTrackr",
 		description: "BrawlTrackr is a statistics tracker for the Brawl Stars Mobile Game.",
-		image: "/task-manager.png",
+		image: "/projects/brawltrackr.jpg",
 		githubUrl: "https://github.com/Sadliquid/BrawlTrackr",
 		tech: ["Flask", "Brawl Stars"]
 	},
 	{
 		title: "CatFace",
 		description: "CatFace is a Microsoft Visual Studio Code Extension that displays varying cat faces that correspond to the bugs in your code. CatFace is now used by over 3000 developers worldwide!",
-		image: "/task-manager.png",
+		image: "/projects/catface.jpg",
 		githubUrl: "https://github.com/Sadliquid/CatFace",
 		tech: ["WebView", "Typescript"]
 	},
 	{
 		title: "Meteo Data",
 		description: "Meteo Data is a Web Application designed to provide real-time weather data and statistics which features an intuitive UI and comprehensive data visualization tools.",
-		image: "/task-manager.png",
+		image: "/projects/meteodata.jpg",
 		githubUrl: "https://github.com/MeteoDataApp",
 		tech: ["ReactJS", "Flask", "Cloud", "Data Visualization"]
 	},
 	{
 		title: "FilmManager",
 		description: "FilmManager is a Web Application designed to streamline the Warehouse Inventory Management for Film Equipment. RFIDManager was built to enable RFID I/O on compatible handheld devices.",
-		image: "/ecommerce.png",
+		image: "/projects/filmmanager.jpg",
 		githubUrl: "https://github.com/FilmManagerProd",
 		tech: ["React Native", "NodeJS", "Expo", "Cloud", "RFID", "Android"]
 	}

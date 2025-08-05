@@ -76,7 +76,7 @@ const Portfolio = () => {
 					<Box borderRadius="50%" boxShadow="0px 8px 16px rgba(0, 0, 0, 0.2)" display="inline-block" overflow="hidden" transition="transform 0.2s ease, box-shadow 0.2s ease">
 						<Avatar.Root shape="full" width="150px" height="150px" border="4px solid" borderColor="blue.100">
 							<Avatar.Fallback name="Joshua Long" />
-							<Avatar.Image src="/profilePhoto.jpg" />
+							<Avatar.Image src="/portfolio/profilePhoto.jpg" />
 						</Avatar.Root>
 					</Box>
 
