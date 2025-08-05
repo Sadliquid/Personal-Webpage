@@ -7,6 +7,13 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 const MotionBox = motion.create(Box);
 const MotionGridItem = motion.create(GridItem);
 
+const techStack = ["DiscordJS", "ReactJS", "NodeJS", "Flask", "Google Cloud", "Swift", "C#", "Netlify"];
+
+const currentFocus = [
+	{ text: "Cloud Architectures & System Design", color: "purple.400" },
+	{ text: "Deep Learning", color: "green.400" }
+];
+
 const awards = [
 	{
 		title: "Python Certification",
@@ -63,7 +70,7 @@ const Portfolio = () => {
 									My Tech Stack
 								</Heading>
 								<Flex wrap="wrap" gap={3}>
-									{["TypeScript", "Python", "React", "Node.js", "Swift", "AWS", "PostgreSQL", "Docker"].map((tech, index) => (
+									{techStack.map((tech, index) => (
 										<MotionBox key={index} initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ type: "spring" }}>
 											<Box px={3} py={1} bg="blue.50" borderRadius="full" border="1px solid" borderColor="blue.100" fontSize="sm">
 												{tech}
@@ -76,14 +83,12 @@ const Portfolio = () => {
 									<Heading fontSize="md" mb={2} color="green.500">
 										Current Focus
 									</Heading>
-									<Flex align="center" gap={2}>
-										<Box w={2} h={2} bg="green.400" borderRadius="full" />
-										<Text fontSize="sm">AI Integration Patterns</Text>
-									</Flex>
-									<Flex align="center" gap={2}>
-										<Box w={2} h={2} bg="purple.400" borderRadius="full" />
-										<Text fontSize="sm">Cloud Native Architectures</Text>
-									</Flex>
+									{currentFocus.map((item, index) => (
+										<Flex key={index} align="center" gap={2}>
+											<Box w={2} h={2} bg={item.color} borderRadius="full" />
+											<Text fontSize="sm">{item.text}</Text>
+										</Flex>
+									))}
 								</Box>
 							</VStack>
 						</Box>
@@ -95,7 +100,7 @@ const Portfolio = () => {
 								Hey, I'm Joshua!
 							</Heading>
 							<Text fontSize={{ base: "md", md: "lg" }} color="gray.600" lineHeight="tall">
-								I am a Full-Stack Developer. I have a passion for building robust Web Applications, developing innovative Discord Bots, and designing intuitive, modern User Interfaces. I love exploring Artificial Intelligence, Cloud
+								I am a Full-Stack Developer. I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces. I love exploring Artificial Intelligence, Cloud
 								Technologies and iOS Development.
 							</Text>
 							<Flex gap={3} mt={4} wrap="wrap">

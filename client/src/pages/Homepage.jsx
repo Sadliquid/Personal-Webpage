@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift } from "react-icons/fa";
 import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs, SiDotnet } from "react-icons/si";
-import { FiTerminal, FiExternalLink, FiCode } from "react-icons/fi";
+import { FiExternalLink, FiCode } from "react-icons/fi";
 import { useState } from "react";
 
 const MotionBox = motion.create(Box);
 const MotionSimpleGrid = motion.create(SimpleGrid);
 const MotionGridItem = motion.create(GridItem);
-const MotionButton = motion.create(Button);
 
 // Variants for staggered animations
 const containerVariants = {
@@ -101,7 +100,7 @@ const Homepage = () => {
 							<Cursor cursorStyle="|" cursorColor="grey" />
 						</Text>
 						<Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
-							I have a passion for building robust Web Applications, developing innovative Discord Bots, and designing intuitive, modern User Interfaces.
+							I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces.
 						</Text>
 						<Link href="#" isExternal _hover={{ textDecoration: "none" }}>
 							<Button
