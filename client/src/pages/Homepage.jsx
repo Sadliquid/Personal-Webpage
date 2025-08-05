@@ -49,49 +49,23 @@ const skills = [
 
 const blogPosts = [
 	{
-		title: "Building a Full-Stack React Application",
+		title: "The impact of AI on our careers",
 		body: `
-            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
+            "AI will replace me someday." This is something you might have heard quite a lot recently. It does beg the obvious question, and the answer is not that simple either. Here is my take on it.
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+            Think of a really good cookbook you've seen recently. As someone with little to no experience in the field of culinary, a well-written cookbook could guide you in preparing delectable dishes after sufficient practice. You could even impress your friends and family with your newly acquired skills!
 
-            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+            But did the cookbook prepare that dish for you? Or were you the one who prepared it?
 
-            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+            Well, AI is very much like that cookbook. It can guide you, provide you with the necessary tools, and even help you improve your skills. However, it cannot replace the human touch, creativity, and intuition that goes into every task.
 
-            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
+            The CEO of Nvidia, Jensen Huang, once said at a conference, "AI is not going to replace you, but people who use AI will replace you." Instead of replacing us, AI is very much likely to be heavily integrated into what we do. It may not necessarily be able to single-handedly replace our skillsets, but it is capable of helping us improve efficiency and ultimately produce better results.
+
+            So the focus isn't really about which of our skills could similarly be replaced by AI, but rather how we can leverage AI to enhance our skills and become more efficient in our work.
+
+            So, will you learn how to use your cookbook?
         `,
-		date: "Mar 15, 2024"
-	},
-	{
-		title: "Mastering TypeScript for Better Code",
-		body: `
-            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
-
-            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
-
-            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
-
-            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
-        `,
-		date: "Apr 2, 2024"
-	},
-	{
-		title: "Mobile Development with Swift UI",
-		body: `
-            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
-
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
-
-            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
-
-            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
-
-            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
-        `,
-		date: "Apr 20, 2024"
+		date: "6th August, 2025"
 	}
 ];
 

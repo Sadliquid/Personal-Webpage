@@ -16,16 +16,46 @@ const currentFocus = [
 
 const awards = [
 	{
-		title: "Python Certification",
-		description: "Certified Python Developer from Python Institute",
+		title: "Certified Entry-Level Python Programmer",
+		description: "Completed a course allowing me to master the fundamentals of basic computing with Python",
 		image: "https://via.placeholder.com/400x300",
 		date: "2023"
 	},
 	{
-		title: "Swift Excellence Award",
-		description: "Recognized for outstanding Swift development skills",
+		title: "Certified Swift Programmer",
+		description: "Completed a course allowing me to master the fundamentals of basic computing with Swift",
+		image: "https://via.placeholder.com/400x300",
+		date: "2023"
+	},
+	{
+		title: "Code Overflow Hackathon 2nd Finalist",
+		description: "Achieved 2nd place with my team in Code Overflow Hackathon 2023, organised by SIT Club’s Ambassador department.",
+		image: "https://via.placeholder.com/400x300",
+		date: "2023"
+	},
+	{
+		title: "Director's List AY2024/25 Semester 1",
+		description: "Admitted to the Director's List for outstanding academic performance in the 1st Semester",
 		image: "https://via.placeholder.com/400x300",
 		date: "2024"
+	},
+	{
+		title: "Director's List AY2024/25 Semester 2",
+		description: "Admitted to the Director's List for outstanding academic performance in the 2nd Semester",
+		image: "https://via.placeholder.com/400x300",
+		date: "2025"
+	},
+	{
+		title: "ABRSM Grade 3 Piano (Merit)",
+		description: "Awarded the ABRSM Level 1 Award in Music Performance (Grade 3) and passed with Merit in 2021",
+		image: "https://via.placeholder.com/400x300",
+		date: "2021"
+	},
+	{
+		title: "Music Ensemble (Merit)",
+		description: "Achieved a Merit in Music Performance (LCM) Ensemble - Level 2 in 2017 @ School of the Arts, Singapore",
+		image: "https://via.placeholder.com/400x300",
+		date: "2017"
 	}
 ];
 
@@ -63,7 +93,6 @@ const Portfolio = () => {
 			<Box mb={20}>
 				<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={12} alignItems="center">
 					<MotionGridItem height={"100%"} order={{ base: 2, md: 1 }} initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-						{/* placeholder card */}
 						<Box bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" shadow="md" p={6} height="100%" overflow="hidden" transition="all 0.3s ease">
 							<VStack spacing={4} align="start">
 								<Heading fontSize="lg" color="blue.600">
@@ -100,11 +129,11 @@ const Portfolio = () => {
 								Hey, I'm Joshua!
 							</Heading>
 							<Text fontSize={{ base: "md", md: "lg" }} color="gray.600" lineHeight="tall">
-								I am a Full-Stack Developer. I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces. I love exploring Artificial Intelligence, Cloud
-								Technologies and iOS Development.
+								I am a Full-Stack Developer. I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces. I love exploring Artificial Intelligence, Cloud Technologies and
+								iOS Development.
 							</Text>
 							<Flex gap={3} mt={4} wrap="wrap">
-								<Link href="https://linkedin.com" isExternal _hover={{ textDecoration: "none" }}>
+								<Link href="https://www.linkedin.com/in/joshua-long-1a21ba257" isExternal _hover={{ textDecoration: "none" }}>
 									<Button
 										variant="outline"
 										borderRadius="full"
@@ -144,7 +173,7 @@ const Portfolio = () => {
 									</Button>
 								</Link>
 
-								<Link href="https://github.com" isExternal _hover={{ textDecoration: "none" }}>
+								<Link href="https://github.com/Sadliquid" isExternal _hover={{ textDecoration: "none" }}>
 									<Button
 										variant="outline"
 										borderRadius="full"
@@ -197,62 +226,64 @@ const Portfolio = () => {
 					</Heading>
 
 					<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} w="full">
-						{awards.map((award, index) => (
-							<Dialog.Root size={"md"} open={isOpen} onOpenChange={onClose} key={index}>
-								<Dialog.Trigger asChild>
-									<MotionGridItem initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-										<Box
-											p={6}
-											bg="white"
-											borderRadius="xl"
-											border="1px solid"
-											borderColor="gray.100"
-											_hover={{
-												transform: "translateY(-4px)",
-												shadow: "lg",
-												cursor: "pointer"
-											}}
-											transition="all 0.3s ease"
-											onClick={() => handleAwardClick(award)}
-										>
-											<Text fontSize="sm" color="gray.500" mb={2}>
-												{award.date}
-											</Text>
-											<Heading fontSize="xl" mb={2} fontWeight="500">
-												{award.title}
-											</Heading>
-											<Text color="gray.600" fontSize="md">
-												{award.description}
-											</Text>
-										</Box>
-									</MotionGridItem>
-								</Dialog.Trigger>
-								<Portal>
-									<Dialog.Backdrop />
-									<Dialog.Positioner>
-										<Dialog.Content>
-											<Dialog.Header>
-												<Dialog.Title>{award.title}</Dialog.Title>
-											</Dialog.Header>
-											<Dialog.Body>
-												<Text fontStyle={"italic"} mb={2}>
+						{[...awards]
+							.sort((a, b) => parseInt(b.date) - parseInt(a.date))
+							.map((award, index) => (
+								<Dialog.Root size={"md"} open={isOpen} onOpenChange={onClose} key={index}>
+									<Dialog.Trigger asChild>
+										<MotionGridItem initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
+											<Box
+												p={6}
+												bg="white"
+												borderRadius="xl"
+												border="1px solid"
+												borderColor="gray.100"
+												_hover={{
+													transform: "translateY(-4px)",
+													shadow: "lg",
+													cursor: "pointer"
+												}}
+												transition="all 0.3s ease"
+												onClick={() => handleAwardClick(award)}
+											>
+												<Text fontSize="sm" color="gray.500" mb={2}>
+													{award.date}
+												</Text>
+												<Heading fontSize="xl" mb={2} fontWeight="500">
+													{award.title}
+												</Heading>
+												<Text color="gray.600" fontSize="md">
 													{award.description}
 												</Text>
-												{selectedAward && <Image src={selectedAward.image} alt={selectedAward.title} borderRadius="md" w="full" />}
-											</Dialog.Body>
-											<Dialog.Footer>
-												<Dialog.ActionTrigger asChild>
-													<Button>Close</Button>
-												</Dialog.ActionTrigger>
-											</Dialog.Footer>
-											<Dialog.CloseTrigger asChild>
-												<CloseButton size="sm" />
-											</Dialog.CloseTrigger>
-										</Dialog.Content>
-									</Dialog.Positioner>
-								</Portal>
-							</Dialog.Root>
-						))}
+											</Box>
+										</MotionGridItem>
+									</Dialog.Trigger>
+									<Portal>
+										<Dialog.Backdrop />
+										<Dialog.Positioner>
+											<Dialog.Content>
+												<Dialog.Header>
+													<Dialog.Title>{award.title}</Dialog.Title>
+												</Dialog.Header>
+												<Dialog.Body>
+													<Text fontStyle={"italic"} mb={2}>
+														{award.description}
+													</Text>
+													{selectedAward && <Image src={selectedAward.image} alt={selectedAward.title} borderRadius="md" w="full" />}
+												</Dialog.Body>
+												<Dialog.Footer>
+													<Dialog.ActionTrigger asChild>
+														<Button>Close</Button>
+													</Dialog.ActionTrigger>
+												</Dialog.Footer>
+												<Dialog.CloseTrigger asChild>
+													<CloseButton size="sm" />
+												</Dialog.CloseTrigger>
+											</Dialog.Content>
+										</Dialog.Positioner>
+									</Portal>
+								</Dialog.Root>
+							))}
 					</Grid>
 				</VStack>
 			</Box>
