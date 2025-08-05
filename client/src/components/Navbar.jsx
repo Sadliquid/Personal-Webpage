@@ -81,8 +81,8 @@ const Navbar = () => {
                             color={isActive ? 'black' : 'gray.600'}
                             position="relative"
                             _hover={{ textDecoration: 'none' }}
-                            initial={{ color: isActive ? 'black' : '#4A5568' }}
-                            whileHover={{ color: 'black' }}
+                            initial={{ color: isActive ? '#000000' : '#4A5568' }}
+                            whileHover={{ color: '#000000' }}
                             transition={{ duration: 0.3 }}
                         >
                             {link.name}

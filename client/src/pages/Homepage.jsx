@@ -7,9 +7,9 @@ import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs
 import { FiTerminal, FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
 
-const MotionBox = motion(Box);
-const MotionSimpleGrid = motion(SimpleGrid);
-const MotionGridItem = motion(GridItem);
+const MotionBox = motion.create(Box);
+const MotionSimpleGrid = motion.create(SimpleGrid);
+const MotionGridItem = motion.create(GridItem);
 
 // Variants for staggered animations
 const containerVariants = {
@@ -56,7 +56,7 @@ const blogPosts = [
 	},
 	{
 		title: "Mastering TypeScript for Better Code",
-		excerpt: "Discover TypeScript's powerful type system and how it improves...",
+		excerpt: "Discover TypeScript's type system and how it improves...",
 		date: "Apr 2, 2024",
 		link: "#"
 	},
