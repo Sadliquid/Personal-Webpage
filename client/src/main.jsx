@@ -6,7 +6,6 @@ import Portfolio from './pages/Portfolio'
 import Testimonial from './pages/Testimonial'
 import Skills from './pages/Skills'
 import Projects from './pages/Projects'
-import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Layout from './Layout'
 
@@ -20,7 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 					<Route path="testimonial" element={<Testimonial />} />
 					<Route path="skills" element={<Skills />} />
 					<Route path="projects" element={<Projects />} />
-					<Route path="contact" element={<Contact />} />
 
 					<Route path="*" element={<NotFound />} />
 				</Route>

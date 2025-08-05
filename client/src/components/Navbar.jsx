@@ -14,7 +14,6 @@ const links = [
     { name: 'Testimonial', href: '/testimonial' },
     { name: 'Skills', href: '/skills' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/contact' }
 ];
 
 const Navbar = () => {

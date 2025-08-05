@@ -60,7 +60,7 @@ const Portfolio = () => {
 						<Box bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" shadow="md" p={6} height="100%" overflow="hidden" transition="all 0.3s ease">
 							<VStack spacing={4} align="start">
 								<Heading fontSize="lg" color="blue.600">
-									Tech Stack Radar
+									My Tech Stack
 								</Heading>
 								<Flex wrap="wrap" gap={3}>
 									{["TypeScript", "Python", "React", "Node.js", "Swift", "AWS", "PostgreSQL", "Docker"].map((tech, index) => (
@@ -73,7 +73,7 @@ const Portfolio = () => {
 								</Flex>
 
 								<Box mt={4} w="full">
-									<Heading fontSize="md" mb={2} color="gray.600">
+									<Heading fontSize="md" mb={2} color="green.500">
 										Current Focus
 									</Heading>
 									<Flex align="center" gap={2}>
