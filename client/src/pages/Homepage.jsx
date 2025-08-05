@@ -224,67 +224,70 @@ const Homepage = () => {
 						Latest Posts
 					</Heading>
 					<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} style={{ minWidth: 0, maxWidth: "100%" }} width="100%">
-						{blogPosts.map((post, index) => (
-							<MotionGridItem key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} style={{ minWidth: 0, maxWidth: "100%" }}>
-								<Box
-									p={6}
-									bg="white"
-									borderRadius="xl"
-									border="1px solid"
-									borderColor="gray.100"
-									transition="all 0.3s ease"
-									style={{
-										width: "100%",
-										minWidth: 0,
-										maxWidth: "100%",
-										overflow: "hidden",
-										display: "flex",
-										flexDirection: "column"
-									}}
-								>
-									<Text fontSize="sm" color="gray.500" mb={2}>
-										{post.date}
-									</Text>
-
-									{/* Title */}
-									<Heading
-										as="h3"
-										fontSize="xl"
-										mb={2}
+						{blogPosts
+							.slice()
+							.sort((a, b) => new Date(b.date) - new Date(a.date))
+							.map((post, index) => (
+								<MotionGridItem key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} style={{ minWidth: 0, maxWidth: "100%" }}>
+									<Box
+										p={6}
+										bg="white"
+										borderRadius="xl"
+										border="1px solid"
+										borderColor="gray.100"
+										transition="all 0.3s ease"
 										style={{
-											whiteSpace: "nowrap",
+											width: "100%",
+											minWidth: 0,
+											maxWidth: "100%",
 											overflow: "hidden",
-											textOverflow: "ellipsis",
-											flexShrink: 1,
-											minWidth: 0
+											display: "flex",
+											flexDirection: "column"
 										}}
 									>
-										{post.title}
-									</Heading>
+										<Text fontSize="sm" color="gray.500" mb={2}>
+											{post.date}
+										</Text>
 
-									{/* Excerpt */}
-									<Text
-										as="p"
-										color="gray.600"
-										mb={4}
-										fontSize="md"
-										style={{
-											whiteSpace: "nowrap",
-											overflow: "hidden",
-											textOverflow: "ellipsis",
-											flexShrink: 1,
-											minWidth: 0
-										}}
-									>
-										{post.body}
-									</Text>
+										{/* Title */}
+										<Heading
+											as="h3"
+											fontSize="xl"
+											mb={2}
+											style={{
+												whiteSpace: "nowrap",
+												overflow: "hidden",
+												textOverflow: "ellipsis",
+												flexShrink: 1,
+												minWidth: 0
+											}}
+										>
+											{post.title}
+										</Heading>
 
-									<Box onClick={() => handlePostClick(post)} color="teal.500" fontWeight="600" style={{ cursor: "pointer" }} _hover={{ textDecoration: "underline" }}>
-										Read more →
+										{/* Excerpt */}
+										<Text
+											as="p"
+											color="gray.600"
+											mb={4}
+											fontSize="md"
+											style={{
+												whiteSpace: "nowrap",
+												overflow: "hidden",
+												textOverflow: "ellipsis",
+												flexShrink: 1,
+												minWidth: 0
+											}}
+										>
+											{post.body}
+										</Text>
+
+										<Box onClick={() => handlePostClick(post)} color="teal.500" fontWeight="600" style={{ cursor: "pointer" }} _hover={{ textDecoration: "underline" }}>
+											Read more →
+										</Box>
 									</Box>
-								</Box>
-							</MotionGridItem>
-						))}
+								</MotionGridItem>
+							))}
 					</Grid>
 				</VStack>
 			</Flex>
