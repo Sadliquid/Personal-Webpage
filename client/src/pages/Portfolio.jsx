@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Link, Flex, Avatar, Button, useDisclosure, CloseButton, Portal } from "@chakra-ui/react";
+import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Link, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon } from "@chakra-ui/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
@@ -101,7 +101,6 @@ const Portfolio = () => {
 							<Flex gap={3} mt={4} wrap="wrap">
 								<Link href="https://linkedin.com" isExternal _hover={{ textDecoration: "none" }}>
 									<Button
-										leftIcon={<FaLinkedin />}
 										variant="outline"
 										borderRadius="full"
 										border="2px solid"
@@ -123,13 +122,25 @@ const Portfolio = () => {
 											transform: "translateY(0)"
 										}}
 									>
+										<MotionBox
+											initial={{ opacity: 0, scale: 0.8 }}
+											animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+											transition={{ duration: 0.3 }}
+											style={{
+												transformOrigin: "center",
+												willChange: "transform",
+												position: "relative"
+											}}
+											mr={2}
+										>
+											<Icon as={FaLinkedin} display="block" mx="auto" />
+										</MotionBox>
 										LinkedIn
 									</Button>
 								</Link>
 
 								<Link href="https://github.com" isExternal _hover={{ textDecoration: "none" }}>
 									<Button
-										leftIcon={<FaGithub />}
 										variant="outline"
 										borderRadius="full"
 										border="2px solid"
@@ -151,6 +162,19 @@ const Portfolio = () => {
 											transform: "translateY(0)"
 										}}
 									>
+										<MotionBox
+											initial={{ opacity: 0, scale: 0.8 }}
+											animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+											transition={{ duration: 0.3 }}
+											style={{
+												transformOrigin: "center",
+												willChange: "transform",
+												position: "relative"
+											}}
+											mr={2}
+										>
+											<Icon as={FaGithub} display="block" mx="auto" />
+										</MotionBox>
 										GitHub
 									</Button>
 								</Link>
