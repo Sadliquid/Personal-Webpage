@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem, Center } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift } from "react-icons/fa";
@@ -71,12 +71,20 @@ const blogPosts = [
 const Homepage = () => {
 	const [text] = useTypewriter({ words: ["Joshua.", "an aspiring Full-Stack Developer"], loop: true, typeSpeed: 60, deleteSpeed: 40 });
 	const [selectedSkill, setSelectedSkill] = useState(null);
+	const [selectedPost, setSelectedPost] = useState(null);
 	const [open, setOpen] = useState(false);
+	const [postOpen, setPostOpen] = useState(false);
 
 	const handleSkillClick = skill => {
 		setSelectedSkill(skill);
 		setOpen(true);
 	};
+
+	const handlePostClick = post => {
+		setSelectedPost(post);
+		setPostOpen(true);
+	};
+
 	const handleRedirect = () => {
 		if (selectedSkill) {
 			window.open(selectedSkill.url, "_blank");
@@ -185,20 +193,13 @@ const Homepage = () => {
 					</MotionSimpleGrid>
 
 					{/* Latest Posts */}
-					<Heading fontSize="3xl" fontWeight="700" color="gray.800" mb={5} mt={16}>
+					<Heading fontSize="3xl" fontWeight="700" color="gray.800" mb={5} mt={10}>
 						Latest Posts
 					</Heading>
 					<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} w="full">
 						{blogPosts.map((post, index) => (
 							<MotionGridItem key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-								<Box
-									p={6}
-									bg="white"
-									borderRadius="xl"
-									border="1px solid"
-									borderColor="gray.100"
-									transition="all 0.3s ease"
-								>
+								<Box p={6} bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" transition="all 0.3s ease">
 									<Text fontSize="sm" color="gray.500" mb={2}>
 										{post.date}
 									</Text>
@@ -208,9 +209,9 @@ const Homepage = () => {
 									<Text color="gray.600" mb={4}>
 										{post.excerpt}
 									</Text>
-									<Link href={post.link} color="teal.500" fontWeight="600" _hover={{ textDecoration: "underline" }}>
+									<Box onClick={() => handlePostClick(post)} color="teal.500" fontWeight="600" _hover={{ textDecoration: "underline", cursor: "pointer" }}>
 										Read more →
-									</Link>
+									</Box>
 								</Box>
 							</MotionGridItem>
 						))}
@@ -248,6 +249,85 @@ const Homepage = () => {
 								<Button colorScheme="teal" onClick={handleRedirect} rightIcon={<FiExternalLink />}>
 									Proceed
 								</Button>
+							</Dialog.Footer>
+						</Dialog.Content>
+					</Dialog.Positioner>
+				</Dialog.Root>
+			)}
+
+			{selectedPost && (
+				<Dialog.Root open={postOpen} onOpenChange={e => setPostOpen(e.open)} placement="center">
+					<Dialog.Backdrop />
+					<Dialog.Positioner>
+						<Dialog.Content maxW="100vw" h="100vh" overflowY="auto" borderRadius="none" bg="white" px={{ base: 6, md: 24 }} py={12}>
+							<Dialog.Header>
+								<Heading fontSize="4xl" fontWeight="bold" lineHeight={1.2}>
+									{selectedPost.title}
+								</Heading>
+							</Dialog.Header>
+
+							<Dialog.Body mt={6}>
+								<Text color="gray.500" fontSize="sm" mb={6} fontFamily={"Georgia, serif"}>
+									Published on {selectedPost.date}
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+									Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
+									Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien
+									pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" fontFamily={"Georgia, serif"}>
+									Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis
+									vulputate at et erat.
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+									Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
+									Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien
+									pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+								</Text>
+								<Text color="gray.800" fontSize="lg" lineHeight="1.8" fontFamily={"Georgia, serif"}>
+									Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis
+									vulputate at et erat.
+								</Text>
+							</Dialog.Body>
+
+							<Dialog.Footer>
+								<Center w="full">
+									<Dialog.CloseTrigger asChild position="static">
+										<Button
+											variant="outline"
+											borderRadius="full"
+											border="2px solid"
+											borderColor="gray.800"
+											bg="gray.800"
+											color="white"
+											px={6}
+											py={5}
+											mt={3}
+											fontWeight="600"
+											fontSize="md"
+											transition="all 0.2s ease"
+											_hover={{
+												bg: "white", // white background on hover
+												borderColor: "white",
+												bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
+												color: "gray.800",
+												transform: "translateY(-2px)",
+												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											}}
+											_active={{
+												transform: "translateY(0)"
+											}}
+										>
+											Return to Home
+										</Button>
+									</Dialog.CloseTrigger>
+								</Center>
 							</Dialog.Footer>
 						</Dialog.Content>
 					</Dialog.Positioner>
