@@ -1,37 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Button, Flex, VStack, Icon, Link, Heading } from "@chakra-ui/react";
+import { Box, Text, Button, Flex, VStack, Icon, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useTypewriter } from "react-simple-typewriter";
 import { FiAlertTriangle } from "react-icons/fi";
 
 const MotionBox = motion.create(Box);
 const MotionText = motion.create(Text);
-const MotionHeading = motion.create(Heading);
+const MotionButton = motion.create(Button);
 
 function NotFound() {
-	const [text] = useTypewriter({
-		words: ["Uh-oh!"],
-		typeSpeed: 30,
-		delaySpeed: 0,
-		loop: 1
-	});
-
 	return (
 		<Box minH="100vh" bg="gray.50" position="relative" overflow="hidden">
 			<Flex minH="100vh" align="center" justify="center" px={8} position="relative" zIndex="1">
 				<VStack spacing={12} align="center" textAlign="center">
 					<MotionBox
 						mb={2}
-						initial={{ scale: 0, rotate: 180 }}
-						animate={{
-							scale: 1,
-							rotate: 360 // 180 + 360 for smooth full spin forward
-						}}
+						initial={{ scale: 0.5, rotate: 0, opacity: 0 }}
+						animate={{ scale: 1, rotate: 360, opacity: 1 }}
 						transition={{
-							type: "spring",
-							stiffness: 260,
-							damping: 20,
-							duration: 0.8
+							type: "tween",
+							ease: "easeInOut",
+							duration: 0.6
 						}}
 						style={{
 							transformOrigin: "center",
@@ -42,26 +30,12 @@ function NotFound() {
 						<Icon as={FiAlertTriangle} boxSize={{ base: 24, md: 32 }} color="orange.400" filter="drop-shadow(0 0 12px rgba(251, 176, 59, 0.5))" display="block" mx="auto" />
 					</MotionBox>
 
-					<MotionHeading
-						fontSize={{ base: "2xl", md: "3xl" }}
-						fontWeight="bold"
-						bgGradient="linear(to-r, teal.400, blue.500)"
-						bgClip="text"
-						color={"gray"}
-						mb={2}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.3 }}
-					>
-						{text}
-					</MotionHeading>
-
-					<MotionText fontSize={{ base: "xl", md: "2xl" }} color="gray.600" maxW="xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}>
+					<MotionText minH="60px" fontSize={{ base: "xl", md: "2xl" }} color="gray.600" maxW="xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
 						Oops! The page you're looking for seems to have wandered off into the digital wilderness...
 					</MotionText>
 
 					<Link href="/" isExternal _hover={{ textDecoration: "none" }}>
-						<Button
+						<MotionButton
 							variant="outline"
 							borderRadius="full"
 							border="2px solid"
@@ -88,7 +62,7 @@ function NotFound() {
 							}}
 						>
 							Return to Home
-						</Button>
+						</MotionButton>
 					</Link>
 				</VStack>
 			</Flex>

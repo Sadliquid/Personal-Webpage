@@ -12,7 +12,6 @@ const links = [
     { name: 'Home', href: '/' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Testimonial', href: '/testimonial' },
-    { name: 'Skills', href: '/skills' },
     { name: 'Projects', href: '/projects' },
 ];
 

@@ -102,7 +102,7 @@ const Homepage = () => {
 						<Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
 							I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces.
 						</Text>
-						<Link href="#" isExternal _hover={{ textDecoration: "none" }}>
+						<Link href="/projects" isExternal _hover={{ textDecoration: "none" }}>
 							<Button
 								variant="outline"
 								borderRadius="full"

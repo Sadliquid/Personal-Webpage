@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Homepage from './pages/Homepage'
 import Portfolio from './pages/Portfolio'
 import Testimonial from './pages/Testimonial'
-import Skills from './pages/Skills'
 import Projects from './pages/Projects'
 import NotFound from './pages/NotFound'
 import Layout from './Layout'
@@ -17,7 +16,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 					<Route index element={<Homepage />} />
 					<Route path="portfolio" element={<Portfolio />} />
 					<Route path="testimonial" element={<Testimonial />} />
-					<Route path="skills" element={<Skills />} />
 					<Route path="projects" element={<Projects />} />
 
 					<Route path="*" element={<NotFound />} />
