@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift } from "react-icons/fa";
 import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs, SiDotnet } from "react-icons/si";
-import { FiTerminal, FiExternalLink } from "react-icons/fi";
+import { FiTerminal, FiExternalLink, FiCode } from "react-icons/fi";
 import { useState } from "react";
 
 const MotionBox = motion.create(Box);
 const MotionSimpleGrid = motion.create(SimpleGrid);
 const MotionGridItem = motion.create(GridItem);
+const MotionButton = motion.create(Button);
 
 // Variants for staggered animations
 const containerVariants = {
@@ -102,9 +103,48 @@ const Homepage = () => {
 						<Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
 							I have a passion for building robust Web Applications, developing innovative Discord Bots, and designing intuitive, modern User Interfaces.
 						</Text>
-						<Button rightIcon={<Icon as={FiTerminal} />} colorScheme="teal" size="lg" px={8} py={6} whileTap={{ scale: 0.98 }}>
-							Explore Projects
-						</Button>
+						<Link href="#" isExternal _hover={{ textDecoration: "none" }}>
+							<Button
+								variant="outline"
+								borderRadius="full"
+								border="2px solid"
+								borderColor="gray.800"
+								bg="gray.800"
+								color="white"
+								px={6}
+								py={5}
+								fontWeight="600"
+								fontSize="md"
+								transition="all 0.2s ease"
+								_hover={{
+									bg: "white", // white background on hover
+									borderColor: "gray.800", // keep gray.800 outline
+									bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
+									color: "gray.800",
+									position: "relative",
+									transform: "translateY(-2px)",
+									boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+								}}
+								_active={{
+									transform: "translateY(0)"
+								}}
+							>
+								<MotionBox
+									initial={{ opacity: 0, scale: 0.8 }}
+									animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+									transition={{ duration: 0.3 }}
+									style={{
+										transformOrigin: "center",
+										willChange: "transform",
+										position: "relative"
+									}}
+									mr={2}
+								>
+									<Icon as={FiCode} display="block" mx="auto" />
+								</MotionBox>
+								Explore Projects
+							</Button>
+						</Link>
 					</MotionBox>
 
 					{/* Skills Grid */}
@@ -226,7 +266,7 @@ const Homepage = () => {
 				w="800px"
 				h="800px"
 				bgGradient="linear(to-br, teal.100, blue.100)"
-                pointerEvents="none"
+				pointerEvents="none"
 				borderRadius="full"
 				filter="blur(80px)"
 				opacity="0.4"
