@@ -50,21 +50,48 @@ const skills = [
 const blogPosts = [
 	{
 		title: "Building a Full-Stack React Application",
-		excerpt: "Learn how to create a modern web app with React and Node.js...",
-		date: "Mar 15, 2024",
-		link: "#"
+		body: `
+            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+
+            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+
+            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+
+            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
+        `,
+		date: "Mar 15, 2024"
 	},
 	{
 		title: "Mastering TypeScript for Better Code",
-		excerpt: "Discover TypeScript's type system and how it improves...",
-		date: "Apr 2, 2024",
-		link: "#"
+		body: `
+            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+
+            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+
+            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+
+            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
+        `,
+		date: "Apr 2, 2024"
 	},
 	{
 		title: "Mobile Development with Swift UI",
-		excerpt: "Getting started with SwiftUI for beautiful iOS applications...",
-		date: "Apr 20, 2024",
-		link: "#"
+		body: `
+            Learn how to create a modern web app with React and Node.js and deploy it to the cloud.
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
+
+            Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
+
+            Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
+
+            Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis vulputate at et erat.
+        `,
+		date: "Apr 20, 2024"
 	}
 ];
 
@@ -196,20 +223,63 @@ const Homepage = () => {
 					<Heading fontSize="3xl" fontWeight="700" color="gray.800" mb={5} mt={10}>
 						Latest Posts
 					</Heading>
-					<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} w="full">
+					<Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={8} style={{ minWidth: 0, maxWidth: "100%" }} width="100%">
 						{blogPosts.map((post, index) => (
-							<MotionGridItem key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-								<Box p={6} bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" transition="all 0.3s ease">
+							<MotionGridItem key={post.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} style={{ minWidth: 0, maxWidth: "100%" }}>
+								<Box
+									p={6}
+									bg="white"
+									borderRadius="xl"
+									border="1px solid"
+									borderColor="gray.100"
+									transition="all 0.3s ease"
+									style={{
+										width: "100%",
+										minWidth: 0,
+										maxWidth: "100%",
+										overflow: "hidden",
+										display: "flex",
+										flexDirection: "column"
+									}}
+								>
 									<Text fontSize="sm" color="gray.500" mb={2}>
 										{post.date}
 									</Text>
-									<Heading fontSize="xl" mb={2}>
+
+									{/* Title */}
+									<Heading
+										as="h3"
+										fontSize="xl"
+										mb={2}
+										style={{
+											whiteSpace: "nowrap",
+											overflow: "hidden",
+											textOverflow: "ellipsis",
+											flexShrink: 1,
+											minWidth: 0
+										}}
+									>
 										{post.title}
 									</Heading>
-									<Text color="gray.600" mb={4}>
-										{post.excerpt}
+
+									{/* Excerpt */}
+									<Text
+										as="p"
+										color="gray.600"
+										mb={4}
+										fontSize="md"
+										style={{
+											whiteSpace: "nowrap",
+											overflow: "hidden",
+											textOverflow: "ellipsis",
+											flexShrink: 1,
+											minWidth: 0
+										}}
+									>
+										{post.body}
 									</Text>
-									<Box onClick={() => handlePostClick(post)} color="teal.500" fontWeight="600" _hover={{ textDecoration: "underline", cursor: "pointer" }}>
+
+									<Box onClick={() => handlePostClick(post)} color="teal.500" fontWeight="600" style={{ cursor: "pointer" }} _hover={{ textDecoration: "underline" }}>
 										Read more →
 									</Box>
 								</Box>
@@ -270,30 +340,11 @@ const Homepage = () => {
 								<Text color="gray.500" fontSize="sm" mb={6} fontFamily={"Georgia, serif"}>
 									Published on {selectedPost.date}
 								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
-									Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
-								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
-									Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien
-									pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
-								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" fontFamily={"Georgia, serif"}>
-									Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis
-									vulputate at et erat.
-								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum metus nec tortor sagittis, ac porta quam luctus. Duis imperdiet at nibh at fringilla. Etiam vel efficitur lectus. Quisque non porta mauris.
-									Vestibulum sed felis ante. Proin id tortor venenatis, volutpat orci at, euismod diam. Suspendisse potenti.
-								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
-									Mauris fermentum arcu ut magna luctus, sed congue sem dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam vel tellus enim. Sed fermentum velit at sapien
-									pretium pretium. Nullam suscipit sapien nec massa interdum, id elementum ligula faucibus.
-								</Text>
-								<Text color="gray.800" fontSize="lg" lineHeight="1.8" fontFamily={"Georgia, serif"}>
-									Phasellus nec erat at nunc facilisis posuere. Sed bibendum nunc nec justo cursus, ac vestibulum ipsum tincidunt. Integer sed mi ac mauris posuere placerat. In ac eros metus. Vivamus sed felis nec libero iaculis
-									vulputate at et erat.
-								</Text>
+								{selectedPost.body.split("\n\n").map((body, i) => (
+									<Text key={i} color="gray.800" fontSize="lg" lineHeight="1.8" mb={4} fontFamily={"Georgia, serif"}>
+										{body}
+									</Text>
+								))}
 							</Dialog.Body>
 
 							<Dialog.Footer>
