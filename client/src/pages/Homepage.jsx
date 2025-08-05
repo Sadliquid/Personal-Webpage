@@ -117,7 +117,7 @@ const Homepage = () => {
 								transition="all 0.2s ease"
 								_hover={{
 									bg: "white", // white background on hover
-									borderColor: "gray.800", // keep gray.800 outline
+									borderColor: "gray.300", // keep gray.800 outline
 									bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
 									color: "gray.800",
 									position: "relative",

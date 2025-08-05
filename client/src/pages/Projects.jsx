@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Heading, SimpleGrid, GridItem, Image, Button, Icon, Flex, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 
+const MotionBox = motion.create(Box);
 const MotionGridItem = motion.create(GridItem);
 
 const projects = [
@@ -85,7 +86,7 @@ const Projects = () => {
 								</Flex>
 
 								<Flex justify="space-between" mt={4} width="100%">
-									<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
+									<Link href={proj.codeUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
 										<Button
 											variant="outline"
 											colorScheme="gray"
@@ -101,7 +102,19 @@ const Projects = () => {
 												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
 											}}
 										>
-											<Icon as={FiGithub} display="inline-block" />
+											<MotionBox
+												initial={{ opacity: 0, scale: 0.8 }}
+												animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+												transition={{ duration: 0.3 }}
+												style={{
+													transformOrigin: "center",
+													willChange: "transform",
+													position: "relative"
+												}}
+												mr={2}
+											>
+												<Icon as={FiGithub} display="block" mx="auto" />
+											</MotionBox>
 											View on GitHub
 										</Button>
 									</Link>
