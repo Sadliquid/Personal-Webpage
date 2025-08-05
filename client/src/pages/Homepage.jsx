@@ -197,11 +197,6 @@ const Homepage = () => {
 									borderRadius="xl"
 									border="1px solid"
 									borderColor="gray.100"
-									_hover={{
-										transform: "translateY(-4px)",
-										shadow: "lg",
-										cursor: "pointer"
-									}}
 									transition="all 0.3s ease"
 								>
 									<Text fontSize="sm" color="gray.500" mb={2}>

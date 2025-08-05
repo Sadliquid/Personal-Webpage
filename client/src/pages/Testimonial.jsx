@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, VStack, Heading, Button, Icon, Flex, Dialog, CloseButton, Portal, Image } from "@chakra-ui/react";
+import { Box, Text, VStack, Heading, Button, Icon, Flex, Dialog, CloseButton, Portal, Image, Center } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
@@ -24,7 +24,7 @@ const Testimonial = () => {
 				<VStack spacing={12} maxW="4xl" mx="auto" mb={8} align="start">
 					{/* Testimonial Card */}
 					<VStack w="full" bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" boxShadow="md" p={{ base: 6, md: 8 }} spacing={6} align="start">
-						{/* Signature Section */}
+						{/* Signature + Desktop Button */}
 						<Flex direction={{ base: "column", md: "row" }} align={{ base: "start", md: "center" }} justify="space-between" w="full" pb={4} borderBottom="1px solid" borderColor="gray.100">
 							<VStack align="start" spacing={0}>
 								<Text fontSize="xl" fontWeight="600" color="gray.800">
@@ -38,53 +38,59 @@ const Testimonial = () => {
 								</Text>
 							</VStack>
 
-							<Dialog.Root open={isOpen} onOpenChange={e => setIsOpen(e.open)}>
-								<Dialog.Trigger asChild>
-									<Button
-										variant="outline"
-										borderRadius="full"
-										border="2px solid"
-										borderColor="gray.800"
-										bg="white"
-										color="gray.800"
-										px={6}
-										py={5}
-										fontWeight="600"
-										fontSize="md"
-										transition="all 0.3s ease"
-										_hover={{
-											bgGradient: "linear(to-r, #0077B5, #00A0DC)",
-											borderColor: "transparent",
-											transform: "translateY(-2px)",
-											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
-										}}
-										_active={{
-											transform: "translateY(0)"
-										}}
-									>
-										View Official Print
-									</Button>
-								</Dialog.Trigger>
-
-								<Portal>
-									<Dialog.Backdrop />
-									<Dialog.Positioner>
-										<Dialog.Content borderRadius="xl">
-											<Dialog.Header>
-												<Dialog.Title fontSize="xl" fontWeight="600">
-													Official Print
-												</Dialog.Title>
-												<Dialog.CloseTrigger asChild>
-													<CloseButton size="sm" />
-												</Dialog.CloseTrigger>
-											</Dialog.Header>
-											<Dialog.Body>
-												<Image src="https://via.placeholder.com/600x800/f7fafc/2d3748?text=Official+Testimonial+Print" alt="Official testimonial document" borderRadius="md" w="full" border="1px solid" borderColor="gray.200" />
-											</Dialog.Body>
-										</Dialog.Content>
-									</Dialog.Positioner>
-								</Portal>
-							</Dialog.Root>
+							{/* Desktop-only trigger */}
+							<Box display={{ base: "none", md: "block" }}>
+								<Dialog.Root open={isOpen} onOpenChange={e => setIsOpen(e.open)}>
+									<Dialog.Trigger asChild>
+										<Button
+											variant="outline"
+											borderRadius="full"
+											border="2px solid"
+											borderColor="gray.800"
+											bg="white"
+											color="gray.800"
+											px={6}
+											py={5}
+											fontWeight="600"
+											fontSize="md"
+											transition="all 0.3s ease"
+											_hover={{
+												bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+												borderColor: "transparent",
+												transform: "translateY(-2px)",
+												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											}}
+										>
+											View Official Print
+										</Button>
+									</Dialog.Trigger>
+									<Portal>
+										<Dialog.Backdrop />
+										<Dialog.Positioner>
+											<Dialog.Content borderRadius="xl">
+												<Dialog.Header>
+													<Dialog.Title fontSize="xl" fontWeight="600">
+														Official Print
+													</Dialog.Title>
+													<Dialog.CloseTrigger asChild>
+														<CloseButton size="sm" />
+													</Dialog.CloseTrigger>
+												</Dialog.Header>
+												<Dialog.Body>
+													<Image
+														src="https://via.placeholder.com/600x800/f7fafc/2d3748?text=Official+Testimonial+Print"
+														alt="Official testimonial document"
+														borderRadius="md"
+														w="full"
+														border="1px solid"
+														borderColor="gray.200"
+													/>
+												</Dialog.Body>
+											</Dialog.Content>
+										</Dialog.Positioner>
+									</Portal>
+								</Dialog.Root>
+							</Box>
 						</Flex>
 
 						{/* Testimonial Content */}
@@ -97,6 +103,36 @@ const Testimonial = () => {
 								</Box>
 							))}
 						</VStack>
+
+						<Box w="full" display={{ base: "block", md: "none" }} pt={4}>
+							<Center>
+								<Dialog.Root open={isOpen} onOpenChange={e => setIsOpen(e.open)}>
+									<Dialog.Trigger asChild>
+										<Button
+											variant="outline"
+											borderRadius="full"
+											border="2px solid"
+											borderColor="gray.800"
+											bg="white"
+											color="gray.800"
+											px={6}
+											py={5}
+											fontWeight="600"
+											fontSize="md"
+											transition="all 0.3s ease"
+											_hover={{
+												bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+												borderColor: "transparent",
+												transform: "translateY(-2px)",
+												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											}}
+										>
+											View Official Print
+										</Button>
+									</Dialog.Trigger>
+								</Dialog.Root>
+							</Center>
+						</Box>
 					</VStack>
 				</VStack>
 			</MotionBox>
