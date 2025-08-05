@@ -16,14 +16,16 @@ const projects = [
 	},
 	{
 		title: "MakanMatch",
-		description: "MakanMatch is a revolutionary Web Platform that connects people of a shared community together, fostering a space for residents to share delectable meals together in a sustainable manner by reducing food wastage. This was our 2nd project to be nominated for the Outstanding Project Presentation!",
+		description:
+			"MakanMatch is a revolutionary Web Platform that connects people of a shared community together, fostering a space for residents to share delectable meals together in a sustainable manner by reducing food wastage. This was our 2nd project to be nominated for the Outstanding Project Presentation!",
 		image: "/task-manager.png",
 		githubUrl: "https://github.com/MakanMatch",
 		tech: ["ReactJS", "NodeJS", "Cloud", "Framer"]
 	},
 	{
 		title: "Recyclify",
-		description: "Recyclify is a sustainable Classroom Management Platform designed to tackle the growing issue of low-engagement rates from students towards contributing to the evnvironment. This was our 3rd project to be nominated for the Outstanding Project Presentation!",
+		description:
+			"Recyclify is a sustainable Classroom Management Platform designed to tackle the growing issue of low-engagement rates from students towards contributing to the evnvironment. This was our 3rd project to be nominated for the Outstanding Project Presentation!",
 		image: "/portfolio-screenshot.png",
 		githubUrl: "https://github.com/RecyclifyApp",
 		tech: ["ReactJS", "ASP.NET Web Core", "Cloud", "Computer Vision", "Framer"]
@@ -75,9 +77,16 @@ const projects = [
 const Projects = () => {
 	return (
 		<Box minH="100vh" pt={24} px={{ base: 4, md: 8, lg: 16 }} bg="gray.50" position="relative" overflow="hidden">
-			<SimpleGrid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={8} w="full">
+			<Box
+				columnCount={{ base: 1, md: 2, lg: 3 }}
+				columnGap="24px"
+				sx={{
+					columnCount: [1, 2, 3],
+					columnGap: "24px"
+				}}
+			>
 				{projects.map((proj, index) => (
-					<MotionGridItem key={proj.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
+					<MotionBox key={proj.title} breakInside="avoid" mb="24px" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
 						<Box bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" overflow="hidden" shadow="md" transition="all 0.3s ease">
 							<Image src={proj.image} alt={proj.title} w="full" h="200px" objectFit="cover" />
 							<Box p={6}>
@@ -94,46 +103,29 @@ const Projects = () => {
 										</Box>
 									))}
 								</Flex>
-
-								<Flex justify="space-between" mt={4} width="100%">
-									<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
-										<Button
-											variant="outline"
-											colorScheme="gray"
-											width="100%"
-											justifyContent="center"
-											borderRadius="full"
-											_hover={{
-												bg: "white",
-												bgGradient: "linear(to-r, #0077B5, #00A0DC)",
-												color: "gray.800",
-												position: "relative",
-												transform: "translateY(-2px)",
-												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
-											}}
-										>
-											<MotionBox
-												initial={{ opacity: 0, scale: 0.8 }}
-												animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-												transition={{ duration: 0.3 }}
-												style={{
-													transformOrigin: "center",
-													willChange: "transform",
-													position: "relative"
-												}}
-												mr={2}
-											>
-												<Icon as={FiGithub} display="block" mx="auto" />
-											</MotionBox>
-											View on GitHub
-										</Button>
-									</Link>
-								</Flex>
+								<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
+									<Button
+										variant="outline"
+										colorScheme="gray"
+										width="100%"
+										borderRadius="full"
+										_hover={{
+											bg: "white",
+											bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+											color: "gray.800",
+											transform: "translateY(-2px)",
+											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+										}}
+									>
+										<Icon as={FiGithub} mr={2} />
+										View on GitHub
+									</Button>
+								</Link>
 							</Box>
 						</Box>
-					</MotionGridItem>
+					</MotionBox>
 				))}
-			</SimpleGrid>
+			</Box>
 		</Box>
 	);
 };
