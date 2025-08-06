@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, Heading, SimpleGrid, GridItem, Image, Button, Icon, Flex, Link } from "@chakra-ui/react";
+import { Box, Text, Heading, SimpleGrid, GridItem, Image, Button, Icon, Flex, Dialog, CloseButton } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FiGithub } from "react-icons/fi";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import { Bouncy } from "ldrs/react";
 import "ldrs/react/Bouncy.css";
 
@@ -72,6 +73,8 @@ const projects = [
 
 const Projects = () => {
 	const [isLoading, setIsLoading] = useState(true);
+	const [externalLinkOpen, setExternalLinkOpen] = useState(false);
+	const [selectedProject, setSelectedProject] = useState(null);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => setIsLoading(false), 1000);
@@ -91,6 +94,18 @@ const Projects = () => {
 
 		preloadImages();
 	}, []);
+
+	const handleGitHubClick = (project) => {
+		setSelectedProject(project);
+		setExternalLinkOpen(true);
+	};
+
+	const handleExternalRedirect = () => {
+		if (selectedProject) {
+			window.open(selectedProject.githubUrl, "_blank");
+			setExternalLinkOpen(false);
+		}
+	};
 
 	if (isLoading) {
 		return (
@@ -123,44 +138,78 @@ const Projects = () => {
 								</Flex>
 
 								<Flex justify="space-between" mt={4} width="100%">
-									<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
-										<Button
-											variant="outline"
-											colorScheme="gray"
-											width="100%"
-											justifyContent="center"
-											borderRadius="full"
-											_hover={{
-												bg: "white",
-												bgGradient: "linear(to-r, #0077B5, #00A0DC)",
-												color: "gray.800",
-												position: "relative",
-												transform: "translateY(-2px)",
-												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+									<Button
+										onClick={() => handleGitHubClick(proj)}
+										variant="outline"
+										colorScheme="gray"
+										width="100%"
+										justifyContent="center"
+										borderRadius="full"
+										_hover={{
+											bg: "white",
+											bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+											color: "gray.800",
+											position: "relative",
+											transform: "translateY(-2px)",
+											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+										}}
+									>
+										<MotionBox
+											initial={{ opacity: 0, scale: 0.8 }}
+											animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+											transition={{ duration: 0.3 }}
+											style={{
+												transformOrigin: "center",
+												willChange: "transform",
+												position: "relative"
 											}}
+											mr={2}
 										>
-											<MotionBox
-												initial={{ opacity: 0, scale: 0.8 }}
-												animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-												transition={{ duration: 0.3 }}
-												style={{
-													transformOrigin: "center",
-													willChange: "transform",
-													position: "relative"
-												}}
-												mr={2}
-											>
-												<Icon as={FiGithub} display="block" mx="auto" />
-											</MotionBox>
-											View on GitHub
-										</Button>
-									</Link>
+											<Icon as={FiGithub} display="block" mx="auto" />
+										</MotionBox>
+										View on GitHub
+									</Button>
 								</Flex>
 							</Box>
 						</Box>
 					</MotionGridItem>
 				))}
 			</SimpleGrid>
+
+			{selectedProject && (
+				<Dialog.Root open={externalLinkOpen} onOpenChange={(e) => setExternalLinkOpen(e.open)} placement="center">
+					<Dialog.Backdrop />
+					<Dialog.Positioner>
+						<Dialog.Content maxW="md" w="90%">
+							<Dialog.Header>
+								<Dialog.Title>You are about to leave this site</Dialog.Title>
+								<Dialog.CloseTrigger asChild>
+									<CloseButton size="sm" />
+								</Dialog.CloseTrigger>
+							</Dialog.Header>
+							<Dialog.Body pb={4}>
+								<Box p={4} bg="gray.50" borderRadius="md" borderLeft="4px solid" borderColor="gray.800">
+									<Flex align="center" gap={3}>
+										<Icon as={FaGithub} color="gray.800" boxSize={6} />
+										<Text fontWeight="medium">{selectedProject.title} - GitHub Repository</Text>
+									</Flex>
+									<Text mt={2} color="gray.600" fontSize="sm">
+										{selectedProject.githubUrl}
+									</Text>
+								</Box>
+								<Text mt={4} fontSize="sm" color="gray.600">
+									This link will take you to an external website. Are you sure you want to continue?
+								</Text>
+							</Dialog.Body>
+							<Dialog.Footer>
+								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />}>
+									Proceed
+								</Button>
+							</Dialog.Footer>
+						</Dialog.Content>
+					</Dialog.Positioner>
+				</Dialog.Root>
+			)}
 		</Box>
 	);
 };

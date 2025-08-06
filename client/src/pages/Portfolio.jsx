@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Link, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon } from "@chakra-ui/react";
+import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon } from "@chakra-ui/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 
 const MotionBox = motion.create(Box);
 const MotionGridItem = motion.create(GridItem);
@@ -59,13 +60,45 @@ const awards = [
 	}
 ];
 
+const externalLinks = [
+	{
+		name: "LinkedIn",
+		url: "https://www.linkedin.com/in/joshua-long-1a21ba257",
+		icon: FaLinkedin,
+		color: "#0077B5",
+		hoverGradient: "linear(to-r, #0077B5, #00A0DC)"
+	},
+	{
+		name: "GitHub",
+		url: "https://github.com/Sadliquid",
+		icon: FaGithub,
+		color: "#333",
+		hoverGradient: "linear(to-r, #0077B5, #00A0DC)"
+	}
+];
+
 const Portfolio = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [selectedAward, setSelectedAward] = useState(null);
 
+	const [externalLinkOpen, setExternalLinkOpen] = useState(false);
+	const [selectedExternalLink, setSelectedExternalLink] = useState(null);
+
 	const handleAwardClick = award => {
 		setSelectedAward(award);
 		onOpen();
+	};
+
+	const handleExternalLinkClick = (linkData) => {
+		setSelectedExternalLink(linkData);
+		setExternalLinkOpen(true);
+	};
+
+	const handleExternalRedirect = () => {
+		if (selectedExternalLink) {
+			window.open(selectedExternalLink.url, "_blank");
+			setExternalLinkOpen(false);
+		}
 	};
 
 	return (
@@ -133,8 +166,10 @@ const Portfolio = () => {
 								iOS Development.
 							</Text>
 							<Flex gap={3} mt={4} wrap="wrap">
-								<Link href="https://www.linkedin.com/in/joshua-long-1a21ba257" isExternal _hover={{ textDecoration: "none" }}>
+								{externalLinks.map((linkData) => (
 									<Button
+										key={linkData.name}
+										onClick={() => handleExternalLinkClick(linkData)}
 										variant="outline"
 										borderRadius="full"
 										border="2px solid"
@@ -147,10 +182,10 @@ const Portfolio = () => {
 										fontSize="md"
 										transition="all 0.3s ease"
 										_hover={{
-											bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+											bgGradient: linkData.hoverGradient,
 											borderColor: "transparent",
 											transform: "translateY(-2px)",
-											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											boxShadow: `0 4px 12px ${linkData.color}40`
 										}}
 										_active={{
 											transform: "translateY(0)"
@@ -167,51 +202,11 @@ const Portfolio = () => {
 											}}
 											mr={2}
 										>
-											<Icon as={FaLinkedin} display="block" mx="auto" />
+											<Icon as={linkData.icon} display="block" mx="auto" />
 										</MotionBox>
-										LinkedIn
+										{linkData.name}
 									</Button>
-								</Link>
-
-								<Link href="https://github.com/Sadliquid" isExternal _hover={{ textDecoration: "none" }}>
-									<Button
-										variant="outline"
-										borderRadius="full"
-										border="2px solid"
-										borderColor="gray.800"
-										bg="white"
-										color="gray.800"
-										px={6}
-										py={5}
-										fontWeight="600"
-										fontSize="md"
-										transition="all 0.3s ease"
-										_hover={{
-											bgGradient: "linear(to-r, #333, #000)",
-											borderColor: "transparent",
-											transform: "translateY(-2px)",
-											boxShadow: "0 4px 12px rgba(0, 0, 0, 0.25)"
-										}}
-										_active={{
-											transform: "translateY(0)"
-										}}
-									>
-										<MotionBox
-											initial={{ opacity: 0, scale: 0.8 }}
-											animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-											transition={{ duration: 0.3 }}
-											style={{
-												transformOrigin: "center",
-												willChange: "transform",
-												position: "relative"
-											}}
-											mr={2}
-										>
-											<Icon as={FaGithub} display="block" mx="auto" />
-										</MotionBox>
-										GitHub
-									</Button>
-								</Link>
+								))}
 							</Flex>
 						</VStack>
 					</MotionGridItem>
@@ -287,6 +282,41 @@ const Portfolio = () => {
 					</Grid>
 				</VStack>
 			</Box>
+
+			{selectedExternalLink && (
+				<Dialog.Root open={externalLinkOpen} onOpenChange={(e) => setExternalLinkOpen(e.open)} placement="center">
+					<Dialog.Backdrop />
+					<Dialog.Positioner>
+						<Dialog.Content maxW="md" w="90%">
+							<Dialog.Header>
+								<Dialog.Title>You are about to leave this site</Dialog.Title>
+								<Dialog.CloseTrigger asChild>
+									<CloseButton size="sm" />
+								</Dialog.CloseTrigger>
+							</Dialog.Header>
+							<Dialog.Body pb={4}>
+								<Box p={4} bg="gray.50" borderRadius="md" borderLeft="4px solid" borderColor={selectedExternalLink.color}>
+									<Flex align="center" gap={3}>
+										<Icon as={selectedExternalLink.icon} color={selectedExternalLink.color} boxSize={6} />
+										<Text fontWeight="medium">{selectedExternalLink.name}</Text>
+									</Flex>
+									<Text mt={2} color="gray.600" fontSize="sm">
+										{selectedExternalLink.url}
+									</Text>
+								</Box>
+								<Text mt={4} fontSize="sm" color="gray.600">
+									This link will take you to an external website. Are you sure you want to continue?
+								</Text>
+							</Dialog.Body>
+							<Dialog.Footer>
+								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />}>
+									Proceed
+								</Button>
+							</Dialog.Footer>
+						</Dialog.Content>
+					</Dialog.Positioner>
+				</Dialog.Root>
+			)}
 		</Box>
 	);
 };
