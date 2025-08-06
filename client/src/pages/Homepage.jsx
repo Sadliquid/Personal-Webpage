@@ -1,3 +1,8 @@
+// To-do:
+// - Add in mobile navbar
+// - Fix typewriter bug on mobile
+// - Add in loader for portfolio pfp and award images
+
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem, Center } from "@chakra-ui/react";
 import { motion } from "framer-motion";

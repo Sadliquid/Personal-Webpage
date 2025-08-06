@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon } from "@chakra-ui/react";
+import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon, Center } from "@chakra-ui/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
@@ -89,7 +89,7 @@ const Portfolio = () => {
 		onOpen();
 	};
 
-	const handleExternalLinkClick = (linkData) => {
+	const handleExternalLinkClick = linkData => {
 		setSelectedExternalLink(linkData);
 		setExternalLinkOpen(true);
 	};
@@ -166,7 +166,7 @@ const Portfolio = () => {
 								iOS Development.
 							</Text>
 							<Flex gap={3} mt={4} wrap="wrap">
-								{externalLinks.map((linkData) => (
+								{externalLinks.map(linkData => (
 									<Button
 										key={linkData.name}
 										onClick={() => handleExternalLinkClick(linkData)}
@@ -267,13 +267,40 @@ const Portfolio = () => {
 													{selectedAward && <Image src={selectedAward.image} alt={selectedAward.title} borderRadius="md" w="full" />}
 												</Dialog.Body>
 												<Dialog.Footer>
-													<Dialog.ActionTrigger asChild>
-														<Button>Close</Button>
-													</Dialog.ActionTrigger>
+													<Center w="full">
+														<Dialog.CloseTrigger asChild position="static">
+															<Button
+																variant="outline"
+																borderRadius="full"
+																border="2px solid"
+																borderColor="gray.800"
+																bg="white"
+																color="black"
+																width={"100%"}
+																mb={2}
+																px={6}
+																py={5}
+																mt={-3}
+																fontWeight="600"
+																fontSize="md"
+																transition="all 0.2s ease"
+																_hover={{
+																	bg: "white", // white background on hover
+																	borderColor: "white",
+																	bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
+																	color: "gray.800",
+																	transform: "translateY(-2px)",
+																	boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+																}}
+																_active={{
+																	transform: "translateY(0)"
+																}}
+															>
+																Close
+															</Button>
+														</Dialog.CloseTrigger>
+													</Center>
 												</Dialog.Footer>
-												<Dialog.CloseTrigger asChild>
-													<CloseButton size="sm" />
-												</Dialog.CloseTrigger>
 											</Dialog.Content>
 										</Dialog.Positioner>
 									</Portal>
@@ -284,7 +311,7 @@ const Portfolio = () => {
 			</Box>
 
 			{selectedExternalLink && (
-				<Dialog.Root open={externalLinkOpen} onOpenChange={(e) => setExternalLinkOpen(e.open)} placement="center">
+				<Dialog.Root open={externalLinkOpen} onOpenChange={e => setExternalLinkOpen(e.open)} placement="center">
 					<Dialog.Backdrop />
 					<Dialog.Positioner>
 						<Dialog.Content maxW="md" w="90%">

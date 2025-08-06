@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Box, Text, VStack, Heading, Button, Icon, Flex, Dialog, CloseButton, Portal, Image, Center } from "@chakra-ui/react";
+import { Box, Text, VStack, Button, Flex, Dialog, Portal, Image, Center } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
 
 const MotionBox = motion.create(Box);
@@ -94,9 +93,39 @@ const Testimonial = () => {
 												</Dialog.Body>
 
 												<Dialog.Footer>
-													<Dialog.ActionTrigger asChild>
-														<Button>Close</Button>
-													</Dialog.ActionTrigger>
+													<Center w="full">
+														<Dialog.CloseTrigger asChild position="static">
+															<Button
+																variant="outline"
+																borderRadius="full"
+																border="2px solid"
+																borderColor="gray.800"
+																bg="white"
+																color="black"
+																width={"100%"}
+																mb={2}
+																px={6}
+																py={5}
+																mt={-3}
+																fontWeight="600"
+																fontSize="md"
+																transition="all 0.2s ease"
+																_hover={{
+																	bg: "white", // white background on hover
+																	borderColor: "white",
+																	bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
+																	color: "gray.800",
+																	transform: "translateY(-2px)",
+																	boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+																}}
+																_active={{
+																	transform: "translateY(0)"
+																}}
+															>
+																Close
+															</Button>
+														</Dialog.CloseTrigger>
+													</Center>
 												</Dialog.Footer>
 											</Dialog.Content>
 										</Dialog.Positioner>
