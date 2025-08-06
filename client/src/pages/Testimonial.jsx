@@ -72,13 +72,19 @@ const Testimonial = () => {
 													<Dialog.Title fontSize="xl" fontWeight="600">
 														Official Print
 													</Dialog.Title>
-													<Dialog.CloseTrigger asChild>
-														<CloseButton size="sm" />
-													</Dialog.CloseTrigger>
 												</Dialog.Header>
 												<Dialog.Body>
 													<Image
-														src="https://via.placeholder.com/600x800/f7fafc/2d3748?text=Official+Testimonial+Print"
+														src="/testimonial/testimonialP1.jpg"
+														alt="Official testimonial document"
+														borderRadius="md"
+														w="full"
+														border="1px solid"
+														borderColor="gray.200"
+													/>
+
+													<Image
+														src="/testimonial/testimonialP2.jpg"
 														alt="Official testimonial document"
 														borderRadius="md"
 														w="full"
@@ -86,6 +92,12 @@ const Testimonial = () => {
 														borderColor="gray.200"
 													/>
 												</Dialog.Body>
+
+												<Dialog.Footer>
+													<Dialog.ActionTrigger asChild>
+														<Button>Close</Button>
+													</Dialog.ActionTrigger>
+												</Dialog.Footer>
 											</Dialog.Content>
 										</Dialog.Positioner>
 									</Portal>

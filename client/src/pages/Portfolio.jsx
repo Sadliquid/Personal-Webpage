@@ -18,43 +18,43 @@ const awards = [
 	{
 		title: "Certified Entry-Level Python Programmer",
 		description: "Completed a course allowing me to master the fundamentals of basic computing with Python",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/entryLevelPython.jpg",
 		date: "2023"
 	},
 	{
 		title: "Certified Swift Programmer",
 		description: "Completed a course allowing me to master the fundamentals of basic computing with Swift",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/swift.jpg",
 		date: "2023"
 	},
 	{
 		title: "Code Overflow Hackathon 2nd Finalist",
 		description: "Achieved 2nd place with my team in Code Overflow Hackathon 2023, organised by SIT Club’s Ambassador department.",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/codeOverflow.jpg",
 		date: "2023"
 	},
 	{
 		title: "Director's List AY2024/25 Semester 1",
 		description: "Admitted to the Director's List for outstanding academic performance in the 1st Semester",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/DList24S1.jpg",
 		date: "2024"
 	},
 	{
 		title: "Director's List AY2024/25 Semester 2",
 		description: "Admitted to the Director's List for outstanding academic performance in the 2nd Semester",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/DList24S2.jpg",
 		date: "2025"
 	},
 	{
 		title: "ABRSM Grade 3 Piano (Merit)",
 		description: "Awarded the ABRSM Level 1 Award in Music Performance (Grade 3) and passed with Merit in 2021",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/grade3Piano.jpg",
 		date: "2021"
 	},
 	{
 		title: "Music Ensemble (Merit)",
 		description: "Achieved a Merit in Music Performance (LCM) Ensemble - Level 2 in 2017 @ School of the Arts, Singapore",
-		image: "https://via.placeholder.com/400x300",
+		image: "/portfolio/ensemble.jpg",
 		date: "2017"
 	}
 ];

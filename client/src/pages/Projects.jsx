@@ -45,13 +45,6 @@ const projects = [
 		tech: ["Microsoft EF Core", "Object-Oriented Programming"]
 	},
 	{
-		title: "BrawlTrackr",
-		description: "BrawlTrackr is a statistics tracker for the Brawl Stars Mobile Game.",
-		image: "/projects/brawltrackr.jpg",
-		githubUrl: "https://github.com/Sadliquid/BrawlTrackr",
-		tech: ["Flask", "Brawl Stars"]
-	},
-	{
 		title: "CatFace",
 		description: "CatFace is a Microsoft Visual Studio Code Extension that displays varying cat faces that correspond to the bugs in your code. CatFace is now used by over 3000 developers worldwide!",
 		image: "/projects/catface.jpg",
@@ -61,14 +54,14 @@ const projects = [
 	{
 		title: "Meteo Data",
 		description: "Meteo Data is a Web Application designed to provide real-time weather data and statistics which features an intuitive UI and comprehensive data visualization tools.",
-		image: "/projects/meteodata.jpg",
+		image: "/projects/meteoData.jpg",
 		githubUrl: "https://github.com/MeteoDataApp",
 		tech: ["ReactJS", "Flask", "Cloud", "Data Visualization"]
 	},
 	{
 		title: "FilmManager",
 		description: "FilmManager is a Web Application designed to streamline the Warehouse Inventory Management for Film Equipment. RFIDManager was built to enable RFID I/O on compatible handheld devices.",
-		image: "/projects/filmmanager.jpg",
+		image: "/projects/filmManager.jpg",
 		githubUrl: "https://github.com/FilmManagerProd",
 		tech: ["React Native", "NodeJS", "Expo", "Cloud", "RFID", "Android"]
 	}
