@@ -59,6 +59,10 @@ const Testimonial = () => {
 												transform: "translateY(-2px)",
 												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
 											}}
+											_focusVisible={{
+												outline: "none",
+												boxShadow: "none"
+											}}
 										>
 											View Official Print
 										</Button>
@@ -121,6 +125,10 @@ const Testimonial = () => {
 																_active={{
 																	transform: "translateY(0)"
 																}}
+																_focusVisible={{
+																	outline: "none",
+																	boxShadow: "none"
+																}}
 															>
 																Close
 															</Button>
@@ -166,6 +174,10 @@ const Testimonial = () => {
 												borderColor: "transparent",
 												transform: "translateY(-2px)",
 												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											}}
+											_focusVisible={{
+												outline: "none",
+												boxShadow: "none"
 											}}
 										>
 											View Official Print

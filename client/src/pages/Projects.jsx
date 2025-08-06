@@ -153,6 +153,10 @@ const Projects = () => {
 											transform: "translateY(-2px)",
 											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
 										}}
+										_focusVisible={{
+											outline: "none",
+											boxShadow: "none"
+										}}
 									>
 										<MotionBox
 											initial={{ opacity: 0, scale: 0.8 }}
@@ -202,7 +206,11 @@ const Projects = () => {
 								</Text>
 							</Dialog.Body>
 							<Dialog.Footer>
-								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />}>
+								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />}
+								_focusVisible={{
+									outline: "none",
+									boxShadow: "none"
+								}}>
 									Proceed
 								</Button>
 							</Dialog.Footer>

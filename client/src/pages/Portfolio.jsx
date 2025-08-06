@@ -228,6 +228,10 @@ const Portfolio = () => {
 										_active={{
 											transform: "translateY(0)"
 										}}
+										_focusVisible={{
+											outline: "none",
+											boxShadow: "none"
+										}}
 									>
 										<MotionBox
 											initial={{ opacity: 0, scale: 0.8 }}
@@ -333,6 +337,10 @@ const Portfolio = () => {
 																_active={{
 																	transform: "translateY(0)"
 																}}
+																_focusVisible={{
+																	outline: "none",
+																	boxShadow: "none"
+																}}
 															>
 																Close
 															</Button>
@@ -374,7 +382,10 @@ const Portfolio = () => {
 								</Text>
 							</Dialog.Body>
 							<Dialog.Footer>
-								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />}>
+								<Button colorScheme="teal" onClick={handleExternalRedirect} rightIcon={<FiExternalLink />} _focusVisible={{
+									outline: "none",
+									boxShadow: "none"
+								}}>
 									Proceed
 								</Button>
 							</Dialog.Footer>

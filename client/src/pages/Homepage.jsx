@@ -1,8 +1,6 @@
 // To-do:
 // - Add in mobile navbar
 // - Fix typewriter bug on mobile
-// - Add in loader for portfolio pfp and award images
-// - Disable CTA highlight UI bug
 
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem, Center } from "@chakra-ui/react";
@@ -142,6 +140,10 @@ const Homepage = () => {
 								_active={{
 									transform: "translateY(0)"
 								}}
+                                _focusVisible={{
+                                    outline: "none",
+                                    boxShadow: "none"
+                                }}
 							>
 								<MotionBox
 									initial={{ opacity: 0, scale: 0.8 }}
@@ -299,7 +301,11 @@ const Homepage = () => {
 								</Text>
 							</Dialog.Body>
 							<Dialog.Footer>
-								<Button colorScheme="teal" onClick={handleRedirect} rightIcon={<FiExternalLink />}>
+								<Button colorScheme="teal" onClick={handleRedirect} rightIcon={<FiExternalLink />}
+                                    _focusVisible={{
+                                    outline: "none",
+                                    boxShadow: "none"
+                                }}>
 									Proceed
 								</Button>
 							</Dialog.Footer>
@@ -357,6 +363,10 @@ const Homepage = () => {
 											_active={{
 												transform: "translateY(0)"
 											}}
+                                            _focusVisible={{
+                                                outline: "none",
+                                                boxShadow: "none"
+                                            }}
 										>
 											Return to Home
 										</Button>
