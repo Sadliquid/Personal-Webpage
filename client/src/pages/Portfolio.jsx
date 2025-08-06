@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, VStack, Heading, Grid, GridItem, Image, Dialog, Flex, Avatar, Button, useDisclosure, CloseButton, Portal, Icon, Center } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import { Bouncy } from "ldrs/react";
+import "ldrs/react/Bouncy.css";
 
 const MotionBox = motion.create(Box);
 const MotionGridItem = motion.create(GridItem);
@@ -84,6 +86,34 @@ const Portfolio = () => {
 	const [externalLinkOpen, setExternalLinkOpen] = useState(false);
 	const [selectedExternalLink, setSelectedExternalLink] = useState(null);
 
+	const [isLoading, setIsLoading] = useState(true);
+
+		useEffect(() => {
+		const timeout = setTimeout(() => setIsLoading(false), 1000);
+
+		const preloadImages = async () => {
+			// Create array of all image paths
+			const imagePaths = [
+				"/portfolio/profilePhoto.jpg", // Profile photo
+				...awards.map(award => award.image) // All award images
+			];
+
+			await Promise.all(
+				imagePaths.map(imagePath => {
+					return new Promise(resolve => {
+						const img = new Image();
+						img.src = imagePath;
+						img.onload = img.onerror = resolve;
+					});
+				})
+			);
+			clearTimeout(timeout);
+			setIsLoading(false);
+		};
+
+		preloadImages();
+	}, []);
+
 	const handleAwardClick = award => {
 		setSelectedAward(award);
 		onOpen();
@@ -100,6 +130,14 @@ const Portfolio = () => {
 			setExternalLinkOpen(false);
 		}
 	};
+
+	if (isLoading) {
+		return (
+			<Flex minH="100vh" align="center" justify="center" bg="gray.50">
+				<Bouncy size="45" speed="1.75" color="rgba(49, 151, 149, 0.7)" />
+			</Flex>
+		);
+	}
 
 	return (
 		<Box minH="100vh" pt={24} px={{ base: 4, md: 8, lg: 16 }} position="relative" overflowX="hidden">

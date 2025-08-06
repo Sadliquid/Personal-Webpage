@@ -2,6 +2,7 @@
 // - Add in mobile navbar
 // - Fix typewriter bug on mobile
 // - Add in loader for portfolio pfp and award images
+// - Disable CTA highlight UI bug
 
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem, Center } from "@chakra-ui/react";
