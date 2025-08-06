@@ -1,7 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Heading, SimpleGrid, GridItem, Image, Button, Icon, Flex, Link } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiGithub } from "react-icons/fi";
+import { Bouncy } from "ldrs/react";
+import "ldrs/react/Bouncy.css";
 
 const MotionBox = motion.create(Box);
 const MotionGridItem = motion.create(GridItem);
@@ -68,18 +71,40 @@ const projects = [
 ];
 
 const Projects = () => {
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		const timeout = setTimeout(() => setIsLoading(false), 1000);
+		const preloadImages = async () => {
+			await Promise.all(
+				projects.map(p => {
+					return new Promise(resolve => {
+						const img = new Image();
+						img.src = p.image;
+						img.onload = img.onerror = resolve;
+					});
+				})
+			);
+			clearTimeout(timeout);
+			setIsLoading(false);
+		};
+
+		preloadImages();
+	}, []);
+
+	if (isLoading) {
+		return (
+			<Flex minH="100vh" align="center" justify="center" bg="gray.50">
+				<Bouncy size="45" speed="1.75" color="rgba(49, 151, 149, 0.7)" />
+			</Flex>
+		);
+	}
+
 	return (
-		<Box minH="100vh" pt={24} px={{ base: 4, md: 8, lg: 16 }} bg="gray.50" position="relative" overflow="hidden">
-			<Box
-				columnCount={{ base: 1, md: 2, lg: 3 }}
-				columnGap="24px"
-				sx={{
-					columnCount: [1, 2, 3],
-					columnGap: "24px"
-				}}
-			>
+		<Box minH="100vh" pt={24} px={{ base: 4, md: 8, lg: 16 }} bg="gray.50">
+			<SimpleGrid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={8} w="full">
 				{projects.map((proj, index) => (
-					<MotionBox key={proj.title} breakInside="avoid" mb="24px" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
+					<MotionGridItem key={proj.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
 						<Box bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" overflow="hidden" shadow="md" transition="all 0.3s ease">
 							<Image src={proj.image} alt={proj.title} w="full" h="200px" objectFit="cover" />
 							<Box p={6}>
@@ -96,29 +121,46 @@ const Projects = () => {
 										</Box>
 									))}
 								</Flex>
-								<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
-									<Button
-										variant="outline"
-										colorScheme="gray"
-										width="100%"
-										borderRadius="full"
-										_hover={{
-											bg: "white",
-											bgGradient: "linear(to-r, #0077B5, #00A0DC)",
-											color: "gray.800",
-											transform: "translateY(-2px)",
-											boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
-										}}
-									>
-										<Icon as={FiGithub} mr={2} />
-										View on GitHub
-									</Button>
-								</Link>
+
+								<Flex justify="space-between" mt={4} width="100%">
+									<Link href={proj.githubUrl} isExternal _hover={{ textDecoration: "none" }} width="100%">
+										<Button
+											variant="outline"
+											colorScheme="gray"
+											width="100%"
+											justifyContent="center"
+											borderRadius="full"
+											_hover={{
+												bg: "white",
+												bgGradient: "linear(to-r, #0077B5, #00A0DC)",
+												color: "gray.800",
+												position: "relative",
+												transform: "translateY(-2px)",
+												boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+											}}
+										>
+											<MotionBox
+												initial={{ opacity: 0, scale: 0.8 }}
+												animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+												transition={{ duration: 0.3 }}
+												style={{
+													transformOrigin: "center",
+													willChange: "transform",
+													position: "relative"
+												}}
+												mr={2}
+											>
+												<Icon as={FiGithub} display="block" mx="auto" />
+											</MotionBox>
+											View on GitHub
+										</Button>
+									</Link>
+								</Flex>
 							</Box>
 						</Box>
-					</MotionBox>
+					</MotionGridItem>
 				))}
-			</Box>
+			</SimpleGrid>
 		</Box>
 	);
 };
