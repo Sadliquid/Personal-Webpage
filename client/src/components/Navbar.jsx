@@ -36,7 +36,7 @@ const Navbar = () => {
 			borderBottom="1px solid"
 			borderColor="gray.100"
 			boxShadow="sm"
-			minH="63px"
+			minH="69px"
 		>
 			<Link href="#" display="flex" alignItems="center" gap={2} textDecoration="none">
 				<Icon as={FiTerminal} w={6} h={6} color="teal.500" />
