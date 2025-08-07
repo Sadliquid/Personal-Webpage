@@ -1,4 +1,4 @@
-import { Flex, Link, Icon, Box, Button, CloseButton, Drawer, For, HStack, Portal } from "@chakra-ui/react";
+import { Flex, Link, Icon, Box, Button, Drawer, Portal } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiTerminal } from "react-icons/fi";
