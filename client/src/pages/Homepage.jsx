@@ -1,5 +1,4 @@
 // To-do:
-// - Add in mobile navbar
 // - Fix typewriter bug on mobile
 
 /* eslint-disable react/no-unescaped-entities */
