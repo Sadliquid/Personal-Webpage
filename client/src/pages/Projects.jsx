@@ -35,6 +35,20 @@ const projects = [
 		tech: ["ReactJS", "ASP.NET Web Core", "Cloud", "Computer Vision", "Framer"]
 	},
 	{
+		title: "Meteo Data",
+		description: "Meteo Data is a Web Application designed to provide real-time weather data and statistics which features an intuitive UI and comprehensive data visualization tools.",
+		image: "/projects/meteoData.jpg",
+		githubUrl: "https://github.com/MeteoDataApp",
+		tech: ["ReactJS", "Flask", "Cloud", "Data Visualization"]
+	},
+	{
+		title: "FilmManager",
+		description: "FilmManager is a Web Application designed to streamline the Warehouse Inventory Management for Film Equipment. RFIDManager was built to enable RFID I/O on compatible handheld devices.",
+		image: "/projects/filmManager.jpg",
+		githubUrl: "https://github.com/FilmManagerProd",
+		tech: ["React Native", "NodeJS", "Expo", "Cloud", "RFID", "Android"]
+	},
+	{
 		title: "ChatNinja",
 		description: "ChatNinja is a Discord AI Assistant built using the DJS library which brings the power of Generative AI to your Discord servers.",
 		image: "/projects/chatninja.jpg",
@@ -54,20 +68,6 @@ const projects = [
 		image: "/projects/catface.jpg",
 		githubUrl: "https://github.com/Sadliquid/CatFace",
 		tech: ["WebView", "Typescript"]
-	},
-	{
-		title: "Meteo Data",
-		description: "Meteo Data is a Web Application designed to provide real-time weather data and statistics which features an intuitive UI and comprehensive data visualization tools.",
-		image: "/projects/meteoData.jpg",
-		githubUrl: "https://github.com/MeteoDataApp",
-		tech: ["ReactJS", "Flask", "Cloud", "Data Visualization"]
-	},
-	{
-		title: "FilmManager",
-		description: "FilmManager is a Web Application designed to streamline the Warehouse Inventory Management for Film Equipment. RFIDManager was built to enable RFID I/O on compatible handheld devices.",
-		image: "/projects/filmManager.jpg",
-		githubUrl: "https://github.com/FilmManagerProd",
-		tech: ["React Native", "NodeJS", "Expo", "Cloud", "RFID", "Android"]
 	}
 ];
 
@@ -121,7 +121,16 @@ const Projects = () => {
 				{projects.map((proj, index) => (
 					<MotionGridItem key={proj.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
 						<Box bg="white" borderRadius="xl" border="1px solid" borderColor="gray.100" overflow="hidden" shadow="md" transition="all 0.3s ease">
-							<Image src={proj.image} alt={proj.title} w="full" h="200px" objectFit="cover" />
+							<Image
+								src={proj.image}
+								alt={proj.title}
+								w="full"
+								h="200px"
+								objectFit="contain"
+								objectPosition="center"
+								bg="white"
+							/>
+
 							<Box p={6}>
 								<Heading fontSize="xl" mb={2} color="gray.800">
 									{proj.title}
