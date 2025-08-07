@@ -1,5 +1,6 @@
-import { Flex, Link, Icon, Box, Button, Drawer, Portal } from "@chakra-ui/react";
+import { Flex, Link, Icon, Box, Button, Drawer, Portal, Text } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiTerminal } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
@@ -17,6 +18,7 @@ const links = [
 
 const Navbar = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	return (
 		<MotionFlex
@@ -105,12 +107,58 @@ const Navbar = () => {
 					<Drawer.Positioner>
 						<Drawer.Content roundedBottom="l3">
 							<Drawer.Header>
-								<Drawer.Title>Joshua's Webpage</Drawer.Title>
+								<Text fontSize="lg" fontFamily="mono" color="green.500" fontWeight="500" letterSpacing="0.05em" bg="blackAlpha.50" p={2} borderRadius="sm" display="inline-block">
+									&lt;Text&gt;Joshua's Webpage&lt;/Text&gt;
+								</Text>
 							</Drawer.Header>
-							<Drawer.Body>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Drawer.Body>
-							<Drawer.Footer>
+							<Drawer.Body>
+								<Flex direction="column" gap={1}>
+									{links.map(link => {
+										const isActive = location.pathname === link.href;
+										return (
+											<Drawer.ActionTrigger key={link.name} asChild>
+												<Button
+													onClick={() => navigate(link.href)}
+													display="block"
+													w="100%"
+													h={12}
+													my={1}
+													borderRadius="md"
+													fontWeight={isActive ? "600" : "500"}
+													color={isActive ? "white" : "gray.700"}
+													bg={isActive ? "rgba(49, 151, 149, 0.7)" : "transparent"}
+													transition="all 0.2s"
+													textAlign={"left"}
+													_hover={{
+														textDecoration: "none",
+														bg: "white", // white background on hover
+														borderColor: "white", // keep gray.800 outline
+														bgGradient: "linear(to-r, #0077B5, #00A0DC)", // gradient overlay
+														color: "gray.800",
+														position: "relative",
+														transform: "translateY(-2px)",
+														boxShadow: "0 4px 12px rgba(0, 119, 181, 0.25)"
+													}}
+													_focusVisible={{
+														outline: "none",
+														boxShadow: "none"
+													}}
+												>
+													{link.name}
+												</Button>
+											</Drawer.ActionTrigger>
+										);
+									})}
+								</Flex>
+							</Drawer.Body>
+							<Drawer.Footer style={{ display: "flex", justifyContent: "center" }}>
 								<Drawer.ActionTrigger asChild>
-									<Button variant="outline">Close</Button>
+									<Button w="100%" variant="outline" _focusVisible={{
+										outline: "none",
+										boxShadow: "none"
+									}}>
+										Close
+									</Button>
 								</Drawer.ActionTrigger>
 							</Drawer.Footer>
 						</Drawer.Content>
