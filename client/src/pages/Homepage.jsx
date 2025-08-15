@@ -1,6 +1,3 @@
-// To-do:
-// - Fix typewriter bug on mobile
-
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Text, Button, Flex, VStack, SimpleGrid, Icon, Heading, Link, Dialog, CloseButton, Grid, GridItem, Center } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -8,13 +5,12 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { FaReact, FaNodeJs, FaPython, FaDatabase, FaSwift } from "react-icons/fa";
 import { SiTypescript, SiJavascript, SiFigma, SiFirebase, SiMongodb, SiNextdotjs, SiDotnet } from "react-icons/si";
 import { FiExternalLink, FiCode } from "react-icons/fi";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const MotionBox = motion.create(Box);
 const MotionSimpleGrid = motion.create(SimpleGrid);
 const MotionGridItem = motion.create(GridItem);
 
-// Variants for staggered animations
 const containerVariants = {
 	hidden: { opacity: 1 },
 	visible: {
@@ -72,12 +68,49 @@ const blogPosts = [
 	}
 ];
 
+const useResponsiveFontSize = () => {
+	const [config, setConfig] = useState({ fontSize: "5xl", minHeight: "100px" });
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		const updateConfig = () => {
+			if (!containerRef.current) return;
+
+			const containerWidth = containerRef.current.offsetWidth;
+
+			if (containerWidth < 480) {
+				setConfig({ fontSize: "3xl", minHeight: "95px" }); // Small phones
+			} else if (containerWidth < 768) {
+				setConfig({ fontSize: "4xl", minHeight: "105px" }); // Large phones
+			} else if (containerWidth < 1024) {
+				setConfig({ fontSize: "5xl", minHeight: "120px" }); // Tablets
+			} else {
+				setConfig({ fontSize: "6xl", minHeight: "145px" }); // Desktop
+			}
+		};
+
+		updateConfig();
+		window.addEventListener('resize', updateConfig);
+
+		return () => window.removeEventListener('resize', updateConfig);
+	}, []);
+
+	return { ...config, containerRef };
+};
+
 const Homepage = () => {
-	const [text] = useTypewriter({ words: ["Joshua.", "an aspiring Full-Stack Developer"], loop: true, typeSpeed: 60, deleteSpeed: 40 });
+	const [text] = useTypewriter({
+		words: ["Joshua.", "an aspiring Full-Stack Developer.", "a passionate UI/UX Designer.", "an AI Enthusiast."],
+		loop: true,
+		typeSpeed: 60,
+		deleteSpeed: 30
+	});
 	const [selectedSkill, setSelectedSkill] = useState(null);
 	const [selectedPost, setSelectedPost] = useState(null);
 	const [open, setOpen] = useState(false);
 	const [postOpen, setPostOpen] = useState(false);
+
+	const { fontSize, minHeight, containerRef } = useResponsiveFontSize();
 
 	const handleSkillClick = skill => {
 		setSelectedSkill(skill);
@@ -101,16 +134,32 @@ const Homepage = () => {
 			<Flex minH="90vh" align="center" px={8} pt={24} pb={16} zIndex="1" maxW="6xl" mx="auto">
 				<VStack align="start" spacing={8} w="full">
 					{/* Intro Section */}
-					<MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+					<MotionBox initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} ref={containerRef} w="full">
 						<Text fontSize="lg" fontFamily="mono" color="green.400" fontWeight="500" letterSpacing="0.05em" bg="blackAlpha.50" px={2} borderRadius="sm" display="inline-block">
 							&lt;Text&gt;Welcome!&lt;/Text&gt;
 						</Text>
-						<Text fontSize={{ base: "4xl", md: "6xl" }} fontWeight="bold" lineHeight="1.1" mb={3}>
-							<Box as="span" color="gray.800" fontSize="5xl">
+
+						{/* Fixed height container to prevent layout shift */}
+						<Box
+							minHeight={minHeight}
+							display="flex"
+							flexDirection="column"
+							justifyContent="flex-start"
+							mb={3}
+						>
+							<Text
+								fontSize={fontSize}
+								fontWeight="bold"
+								lineHeight="1.2"
+								color="gray.800"
+								wordBreak="break-word"
+								hyphens="auto"
+							>
 								Hey 👋🏻 I'm {text}
-							</Box>
-							<Cursor cursorStyle="|" cursorColor="grey" />
-						</Text>
+								<Cursor cursorStyle="|" cursorColor="grey" />
+							</Text>
+						</Box>
+
 						<Text fontSize="xl" color="gray.600" maxW="2xl" mb={3}>
 							I have a passion for building modern Web Applications, developing innovative tools and designing intuitive User Interfaces.
 						</Text>
