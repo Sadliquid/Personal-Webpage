@@ -84,7 +84,7 @@ const useResponsiveFontSize = () => {
 			if (containerWidth < 480) {
 				setConfig({
 					fontSize: "2xl",
-					minHeight: "50px"
+					minHeight: "60px"
 				});
 			} else if (containerWidth < 735) {
 				setConfig({
