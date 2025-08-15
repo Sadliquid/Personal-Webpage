@@ -69,7 +69,10 @@ const blogPosts = [
 ];
 
 const useResponsiveFontSize = () => {
-	const [config, setConfig] = useState({ fontSize: "5xl", minHeight: "100px" });
+	const [config, setConfig] = useState({
+		fontSize: "5xl",
+		minHeight: "auto"
+	});
 	const containerRef = useRef(null);
 
 	useEffect(() => {
@@ -79,20 +82,32 @@ const useResponsiveFontSize = () => {
 			const containerWidth = containerRef.current.offsetWidth;
 
 			if (containerWidth < 480) {
-				setConfig({ fontSize: "3xl", minHeight: "95px" }); // Small phones
-			} else if (containerWidth < 768) {
-				setConfig({ fontSize: "4xl", minHeight: "105px" }); // Large phones
+				setConfig({
+					fontSize: "2xl",
+					minHeight: "50px"
+				});
+			} else if (containerWidth < 735) {
+				setConfig({
+					fontSize: "4xl",
+					minHeight: "90px"
+				});
 			} else if (containerWidth < 1024) {
-				setConfig({ fontSize: "5xl", minHeight: "120px" }); // Tablets
+				setConfig({
+					fontSize: "4xl",
+					minHeight: "auto"
+				});
 			} else {
-				setConfig({ fontSize: "6xl", minHeight: "145px" }); // Desktop
+				setConfig({
+					fontSize: "5xl",
+					minHeight: "auto"
+				});
 			}
 		};
 
 		updateConfig();
-		window.addEventListener('resize', updateConfig);
+		window.addEventListener("resize", updateConfig);
 
-		return () => window.removeEventListener('resize', updateConfig);
+		return () => window.removeEventListener("resize", updateConfig);
 	}, []);
 
 	return { ...config, containerRef };
@@ -145,16 +160,8 @@ const Homepage = () => {
 							display="flex"
 							flexDirection="column"
 							justifyContent="flex-start"
-							mb={3}
 						>
-							<Text
-								fontSize={fontSize}
-								fontWeight="bold"
-								lineHeight="1.2"
-								color="gray.800"
-								wordBreak="break-word"
-								hyphens="auto"
-							>
+							<Text fontSize={fontSize} fontWeight="bold" lineHeight="1.2" color="gray.800" wordBreak="break-word" hyphens="auto" mb={minHeight === "auto" ? 2 : 0}>
 								Hey 👋🏻 I'm {text}
 								<Cursor cursorStyle="|" cursorColor="grey" />
 							</Text>
@@ -188,10 +195,10 @@ const Homepage = () => {
 								_active={{
 									transform: "translateY(0)"
 								}}
-                                _focusVisible={{
-                                    outline: "none",
-                                    boxShadow: "none"
-                                }}
+								_focusVisible={{
+									outline: "none",
+									boxShadow: "none"
+								}}
 							>
 								<MotionBox
 									initial={{ opacity: 0, scale: 0.8 }}
@@ -349,11 +356,15 @@ const Homepage = () => {
 								</Text>
 							</Dialog.Body>
 							<Dialog.Footer>
-								<Button colorScheme="teal" onClick={handleRedirect} rightIcon={<FiExternalLink />}
-                                    _focusVisible={{
-                                    outline: "none",
-                                    boxShadow: "none"
-                                }}>
+								<Button
+									colorScheme="teal"
+									onClick={handleRedirect}
+									rightIcon={<FiExternalLink />}
+									_focusVisible={{
+										outline: "none",
+										boxShadow: "none"
+									}}
+								>
 									Proceed
 								</Button>
 							</Dialog.Footer>
@@ -411,10 +422,10 @@ const Homepage = () => {
 											_active={{
 												transform: "translateY(0)"
 											}}
-                                            _focusVisible={{
-                                                outline: "none",
-                                                boxShadow: "none"
-                                            }}
+											_focusVisible={{
+												outline: "none",
+												boxShadow: "none"
+											}}
 										>
 											Return to Home
 										</Button>
