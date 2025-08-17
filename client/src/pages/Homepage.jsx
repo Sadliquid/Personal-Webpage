@@ -71,7 +71,8 @@ const blogPosts = [
 const useResponsiveFontSize = () => {
 	const [config, setConfig] = useState({
 		fontSize: "5xl",
-		minHeight: "auto"
+		minHeight: "auto",
+		containerWidth: 0
 	});
 	const containerRef = useRef(null);
 
@@ -84,22 +85,26 @@ const useResponsiveFontSize = () => {
 			if (containerWidth < 480) {
 				setConfig({
 					fontSize: "2xl",
-					minHeight: "60px"
+					minHeight: "70px",
+					containerWidth
 				});
 			} else if (containerWidth < 735) {
 				setConfig({
 					fontSize: "4xl",
-					minHeight: "90px"
+					minHeight: "90px",
+					containerWidth
 				});
 			} else if (containerWidth < 1024) {
 				setConfig({
 					fontSize: "4xl",
-					minHeight: "auto"
+					minHeight: "auto",
+					containerWidth
 				});
 			} else {
 				setConfig({
 					fontSize: "5xl",
-					minHeight: "auto"
+					minHeight: "auto",
+					containerWidth
 				});
 			}
 		};
@@ -125,7 +130,7 @@ const Homepage = () => {
 	const [open, setOpen] = useState(false);
 	const [postOpen, setPostOpen] = useState(false);
 
-	const { fontSize, minHeight, containerRef } = useResponsiveFontSize();
+	const { fontSize, minHeight, containerRef, containerWidth } = useResponsiveFontSize();
 
 	const handleSkillClick = skill => {
 		setSelectedSkill(skill);
@@ -161,7 +166,7 @@ const Homepage = () => {
 							flexDirection="column"
 							justifyContent="flex-start"
 						>
-							<Text fontSize={fontSize} fontWeight="bold" lineHeight="1.2" color="gray.800" wordBreak="break-word" hyphens="auto" mb={minHeight === "auto" ? 2 : 0}>
+							<Text fontSize={fontSize} fontWeight="bold" lineHeight="1.2" color="gray.800" wordBreak="break-word" hyphens="auto" mt={containerWidth < 480 ? 2 : minHeight === "auto" ? 2 : 0} mb={1}>
 								Hey 👋🏻 I'm {text}
 								<Cursor cursorStyle="|" cursorColor="grey" />
 							</Text>
