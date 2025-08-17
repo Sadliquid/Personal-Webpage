@@ -196,7 +196,10 @@ const Projects = () => {
 						<Dialog.Content maxW="md" w="90%">
 							<Dialog.Header>
 								<Dialog.Title>You are about to leave this site</Dialog.Title>
-								<Dialog.CloseTrigger asChild>
+								<Dialog.CloseTrigger asChild _focusVisible={{
+									outline: "none",
+									boxShadow: "none"
+								}}>
 									<CloseButton size="sm" />
 								</Dialog.CloseTrigger>
 							</Dialog.Header>
