@@ -58,11 +58,11 @@ const blogPosts = [
 
             Well, AI is very much like that cookbook. It can guide you, provide you with the necessary tools, and even help you improve your skills. However, it cannot replace the human touch, creativity, and intuition that goes into every task.
 
-            The CEO of Nvidia, Jensen Huang, once said at a conference, "AI is not going to replace you, but people who use AI will replace you." Instead of replacing us, AI is very much likely to be heavily integrated into what we do. It may not necessarily be able to single-handedly replace our skillsets, but it is capable of helping us improve efficiency and ultimately produce better results.
+            The CEO of Nvidia, Jensen Huang, once said at a conference, "AI is not going to replace you, but people who use AI will." Instead of replacing us, AI will be heavily integrated into what we do - whether or not you like it. It may not necessarily be able to single-handedly replace our skillsets, but it is capable of helping us improve efficiency and ultimately produce better results.
 
-            So the focus isn't really about which of our skills could similarly be replaced by AI, but rather how we can leverage AI to enhance our skills and become more efficient in our work.
+            So the focus isn't really about which of our skills could similarly be replaced by AI, but rather how we can leverage AI to enhance our skills and become more efficient in what we do.
 
-            So, will you learn how to use your cookbook?
+            I'm actively learning how to use my cookbook. Will you use yours?
         `,
 		date: "6th August, 2025"
 	}

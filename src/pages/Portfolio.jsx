@@ -74,7 +74,7 @@ const externalLinks = [
 		name: "GitHub",
 		url: "https://github.com/Sadliquid",
 		icon: FaGithub,
-		color: "#333",
+		color: "#0077B5",
 		hoverGradient: "linear(to-r, #0077B5, #00A0DC)"
 	}
 ];
