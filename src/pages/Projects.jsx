@@ -64,7 +64,7 @@ const projects = [
 	},
 	{
 		title: "CatFace",
-		description: "CatFace is a Microsoft Visual Studio Code Extension that displays varying cat faces that correspond to the bugs in your code. CatFace is now used by over 3000 developers worldwide!",
+		description: "CatFace is a Microsoft Visual Studio Code Extension that displays varying cat faces that correspond to the bugs in your code. CatFace is now used by over 9000 developers worldwide!",
 		image: "/projects/catface.jpg",
 		githubUrl: "https://github.com/Sadliquid/CatFace",
 		tech: ["WebView", "Typescript"]
